@@ -199,7 +199,7 @@ export class AnnotationsDisplay {
 
             {/* Show annotations */} <br/>
             <div class="annotation_search">
-              Sample Identifier : <input type="text" onInput={(event) =>this.updateSampleIdentifier(event)}/> 
+              Sample Identifier : <input type="text" value={this.sampleIdentifier} onInput={(event) =>this.updateSampleIdentifier(event)}/> 
               <button id="search_button" class="search_button">
                 Search
               </button>
