@@ -1,0 +1,16 @@
+{
+  "entries": [
+    "./components/about-throughput/about-throughput.js",
+    "./components/annotations-display/annotations-display.js",
+    "./components/data-display/data-display.js",
+    "./components/orcid-connect/orcid-connect.js",
+    "./components/throughput-widget/throughput-widget.js"
+  ],
+  "compiler": {
+    "name": "@stencil/core",
+    "version": "1.16.3",
+    "typescriptVersion": "3.9.6"
+  },
+  "collections": [],
+  "bundles": []
+}

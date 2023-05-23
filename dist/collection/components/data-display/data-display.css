@@ -1,0 +1,33 @@
+.summary {
+  text-align: center;
+  text-overflow: ellipsis;
+}
+
+.helptext {
+  font-size: small;
+  text-align: center;
+}
+
+.summary-container {
+  padding-left: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.badge {
+  cursor: pointer;
+  padding: 3px;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.throughput-logo {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.throughput-logo img {
+  width: 30px;
+}
