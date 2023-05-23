@@ -14,14 +14,16 @@ export declare class AnnotationsDisplay {
     addAnnotation: boolean;
     showInfo: boolean;
     annotationText: string;
-    sampleIdentifier: string;
+    searchSampleIdentifier: string;
+    postSampleIdentifier: string;
     annotationAdded: EventEmitter<void>;
     checkAuth: EventEmitter<void>;
     handleClick(ev: any): Promise<void>;
     componentWillRender(): void;
     updateAnnotationText(event: any): void;
     clearDefaultAnnotationText(event: any): void;
-    updateSampleIdentifier(event: any): void;
+    updateSearchSampleIdentifier(event: any): void;
+    updatePostSampleIdentifier(event: any): void;
     submitAnnotation(): Promise<boolean>;
     getFormattedDate(date: any): string;
     render(): any;

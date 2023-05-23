@@ -136,6 +136,12 @@ button {
   background-color: darkred;
 }
 
+.postInput {
+  font-size: 18px;
+  margin: 5px;
+  padding: 2px;
+}
+
 textarea {
   resize: none;
   width: 100%;

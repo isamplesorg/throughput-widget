@@ -22,7 +22,8 @@ export class AnnotationsDisplay {
   @State() addAnnotation: boolean; // show add annotation text area, Submit/Cancel buttons
   @State() showInfo: boolean = false; // show AboutThroughput component
   @State() annotationText: string; // current annotation text
-  @State() sampleIdentifier: string; 
+  @State() searchSampleIdentifier: string; 
+  @State() postSampleIdentifier: string; 
 
   @Event({
     eventName: 'annotationAdded',
@@ -67,11 +68,11 @@ export class AnnotationsDisplay {
         this.showInfo = false;
         break;
       case "search_button":
-        this.handleSampleIdentifier(this.sampleIdentifier); // pass value to parents
+        this.handleSampleIdentifier(this.searchSampleIdentifier); // pass value to parents
         break; 
       case "reset_button":
-        this.sampleIdentifier = "";
-        this.handleSampleIdentifier(this.sampleIdentifier);
+        this.searchSampleIdentifier = "";
+        this.handleSampleIdentifier(this.searchSampleIdentifier);
         break;
       default:
         console.error("Unhandled click, id = ", clicked_id);
@@ -93,8 +94,12 @@ export class AnnotationsDisplay {
     }
   }
 
-  updateSampleIdentifier(event){
-    this.sampleIdentifier = event.target.value;
+  updateSearchSampleIdentifier(event){
+    this.searchSampleIdentifier = event.target.value;
+  }
+
+  updatePostSampleIdentifier(event){
+    this.postSampleIdentifier = event.target.value;
   }
 
   // POST new annotation to Throughput
@@ -102,7 +107,7 @@ export class AnnotationsDisplay {
     const annotation = {
       dbid: this.identifier,
       additionalType: this.additionalType,
-      id: this.link,
+      id: this.postSampleIdentifier,
       body: this.annotationText,
     };
     const url = "https://throughputdb.com/api/widget/";
@@ -146,7 +151,8 @@ export class AnnotationsDisplay {
     let annotationElement;
     if (this.addAnnotation) {
       annotationElement =
-      <div>
+      <div class="postInput">
+        Sample Identifier <input type="text" value={this.postSampleIdentifier} onInput={(event) =>this.updatePostSampleIdentifier(event)}/> 
         <textarea
           onInput={(event) => this.updateAnnotationText(event)}
           onFocus={(event) => this.clearDefaultAnnotationText(event)}
@@ -199,7 +205,7 @@ export class AnnotationsDisplay {
 
             {/* Show annotations */} <br/>
             <div class="annotation_search">
-              Sample Identifier : <input type="text" value={this.sampleIdentifier} onInput={(event) =>this.updateSampleIdentifier(event)}/> 
+              Sample Identifier : <input type="text" value={this.searchSampleIdentifier} onInput={(event) =>this.updateSearchSampleIdentifier(event)}/> 
               <button id="search_button" class="search_button">
                 Search
               </button>

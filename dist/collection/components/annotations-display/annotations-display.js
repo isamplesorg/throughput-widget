@@ -36,11 +36,11 @@ export class AnnotationsDisplay {
                 this.showInfo = false;
                 break;
             case "search_button":
-                this.handleSampleIdentifier(this.sampleIdentifier); // pass value to parents
+                this.handleSampleIdentifier(this.searchSampleIdentifier); // pass value to parents
                 break;
             case "reset_button":
-                this.sampleIdentifier = "";
-                this.handleSampleIdentifier(this.sampleIdentifier);
+                this.searchSampleIdentifier = "";
+                this.handleSampleIdentifier(this.searchSampleIdentifier);
                 break;
             default:
                 console.error("Unhandled click, id = ", clicked_id);
@@ -58,15 +58,18 @@ export class AnnotationsDisplay {
             event.target.value = '';
         }
     }
-    updateSampleIdentifier(event) {
-        this.sampleIdentifier = event.target.value;
+    updateSearchSampleIdentifier(event) {
+        this.searchSampleIdentifier = event.target.value;
+    }
+    updatePostSampleIdentifier(event) {
+        this.postSampleIdentifier = event.target.value;
     }
     // POST new annotation to Throughput
     async submitAnnotation() {
         const annotation = {
             dbid: this.identifier,
             additionalType: this.additionalType,
-            id: this.link,
+            id: this.postSampleIdentifier,
             body: this.annotationText,
         };
         const url = "https://throughputdb.com/api/widget/";
@@ -107,7 +110,9 @@ export class AnnotationsDisplay {
         let annotationElement;
         if (this.addAnnotation) {
             annotationElement =
-                h("div", null,
+                h("div", { class: "postInput" },
+                    "Sample Identifier ",
+                    h("input", { type: "text", value: this.postSampleIdentifier, onInput: (event) => this.updatePostSampleIdentifier(event) }),
                     h("textarea", { onInput: (event) => this.updateAnnotationText(event), onFocus: (event) => this.clearDefaultAnnotationText(event) }, this.DEFAULT_ANNOTATION_TEXT),
                     h("button", { id: "submit_button", class: "add_button" }, "Submit"),
                     h("button", { id: "cancel_button", class: "cancel_button" }, "Cancel"));
@@ -129,7 +134,7 @@ export class AnnotationsDisplay {
                     h("br", null),
                     h("div", { class: "annotation_search" },
                         "Sample Identifier : ",
-                        h("input", { type: "text", value: this.sampleIdentifier, onInput: (event) => this.updateSampleIdentifier(event) }),
+                        h("input", { type: "text", value: this.searchSampleIdentifier, onInput: (event) => this.updateSearchSampleIdentifier(event) }),
                         h("button", { id: "search_button", class: "search_button" }, "Search"),
                         h("button", { id: "reset_button", class: "search_button" }, "Reset")),
                     this.annotations.map((annotation) => (h("div", { class: "annotation_item" },
@@ -336,7 +341,8 @@ export class AnnotationsDisplay {
         "addAnnotation": {},
         "showInfo": {},
         "annotationText": {},
-        "sampleIdentifier": {}
+        "searchSampleIdentifier": {},
+        "postSampleIdentifier": {}
     }; }
     static get events() { return [{
             "method": "annotationAdded",

@@ -16,7 +16,7 @@ const AboutThroughput = class {
 };
 AboutThroughput.style = aboutThroughputCss;
 
-const annotationsDisplayCss = ".overlay{cursor:default;position:fixed;z-index:100000;height:100%;width:100%;top:0px;left:0px;background-color:rgba(0, 0, 0, 0.5)}.annotation_list{display:-ms-flexbox;display:flex;-ms-flex-flow:column;flex-flow:column;z-index:100001;margin:10vh auto;width:50vw;max-height:80vh;min-width:300px;background-color:var(--modal-background-color, white);border-radius:4px}.annotation_item{color:var(--modal-font-color, black);font-weight:normal;background-color:var(--modal-card-color, white);padding:10px;-webkit-box-shadow:0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);box-shadow:0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);margin-bottom:10px;border-radius:4px;cursor:default;}.annotation_author{display:-ms-flexbox;display:flex;-ms-flex-direction:column;flex-direction:column;-ms-flex-pack:distribute;justify-content:space-around}.orcidLink{cursor:pointer;padding-right:10px;padding-left:3px;display:-ms-flexbox;display:flex;-ms-flex-direction:column;flex-direction:column;-ms-flex-pack:center;justify-content:center}.orcidLink a{display:-ms-flexbox;display:flex;-ms-flex-direction:column;flex-direction:column;-ms-flex-pack:center;justify-content:center}.annotation_metadata{font-size:smaller;display:-ms-flexbox;display:flex;-ms-flex-direction:row;flex-direction:row;-ms-flex-pack:start;justify-content:flex-start;padding-top:5px}.annotation_search{font-size:18px;padding:3px}.body{padding:20px;padding-top:0px;overflow-y:scroll;background-color:var(--modal-background-color, white);border-radius:4px;display:-ms-flexbox;display:flex;-ms-flex-direction:column;flex-direction:column}.header{color:#3b99e0;background-color:var(--modal-background-color, white);-webkit-box-shadow:0 0 0px rgba(0, 0, 0, 0.12), 0 2px 2px rgba(0, 0, 0, 0.24);box-shadow:0 0 0px rgba(0, 0, 0, 0.12), 0 2px 2px rgba(0, 0, 0, 0.24);z-index:10000000;font-size:20px;border-radius:4px;text-align:center;padding-bottom:25px}button{border:none;color:white;padding:5px;text-align:center;text-decoration:none;display:inline-block;font-size:18px;font-family:inherit;width:150px;border-radius:6px;cursor:pointer;margin:5px}.search_button{background-color:#4caf50;font-size:15px;width:auto;margin:3px}.add_button{background-color:#4caf50;margin:auto}.add_button:hover{background-color:#3e8e41}.cancel_button{background-color:red}.cancel_button:hover{background-color:darkred}textarea{resize:none;width:100%;height:200px;font-size:20px;font-family:inherit;}input{margin:3px}.closeContainer{display:-ms-flexbox;display:flex;-ms-flex-direction:row-reverse;flex-direction:row-reverse}.close{width:32px;height:32px;opacity:0.3}.close:hover{opacity:1}.close:before,.close:after{position:absolute;top:10vh;margin-left:12px;content:\" \";height:33px;width:2px;background-color:#333}.close:before{-webkit-transform:rotate(45deg);transform:rotate(45deg)}.close:after{-webkit-transform:rotate(-45deg);transform:rotate(-45deg)}";
+const annotationsDisplayCss = ".overlay{cursor:default;position:fixed;z-index:100000;height:100%;width:100%;top:0px;left:0px;background-color:rgba(0, 0, 0, 0.5)}.annotation_list{display:-ms-flexbox;display:flex;-ms-flex-flow:column;flex-flow:column;z-index:100001;margin:10vh auto;width:50vw;max-height:80vh;min-width:300px;background-color:var(--modal-background-color, white);border-radius:4px}.annotation_item{color:var(--modal-font-color, black);font-weight:normal;background-color:var(--modal-card-color, white);padding:10px;-webkit-box-shadow:0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);box-shadow:0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);margin-bottom:10px;border-radius:4px;cursor:default;}.annotation_author{display:-ms-flexbox;display:flex;-ms-flex-direction:column;flex-direction:column;-ms-flex-pack:distribute;justify-content:space-around}.orcidLink{cursor:pointer;padding-right:10px;padding-left:3px;display:-ms-flexbox;display:flex;-ms-flex-direction:column;flex-direction:column;-ms-flex-pack:center;justify-content:center}.orcidLink a{display:-ms-flexbox;display:flex;-ms-flex-direction:column;flex-direction:column;-ms-flex-pack:center;justify-content:center}.annotation_metadata{font-size:smaller;display:-ms-flexbox;display:flex;-ms-flex-direction:row;flex-direction:row;-ms-flex-pack:start;justify-content:flex-start;padding-top:5px}.annotation_search{font-size:18px;padding:3px}.body{padding:20px;padding-top:0px;overflow-y:scroll;background-color:var(--modal-background-color, white);border-radius:4px;display:-ms-flexbox;display:flex;-ms-flex-direction:column;flex-direction:column}.header{color:#3b99e0;background-color:var(--modal-background-color, white);-webkit-box-shadow:0 0 0px rgba(0, 0, 0, 0.12), 0 2px 2px rgba(0, 0, 0, 0.24);box-shadow:0 0 0px rgba(0, 0, 0, 0.12), 0 2px 2px rgba(0, 0, 0, 0.24);z-index:10000000;font-size:20px;border-radius:4px;text-align:center;padding-bottom:25px}button{border:none;color:white;padding:5px;text-align:center;text-decoration:none;display:inline-block;font-size:18px;font-family:inherit;width:150px;border-radius:6px;cursor:pointer;margin:5px}.search_button{background-color:#4caf50;font-size:15px;width:auto;margin:3px}.add_button{background-color:#4caf50;margin:auto}.add_button:hover{background-color:#3e8e41}.cancel_button{background-color:red}.cancel_button:hover{background-color:darkred}.postInput{font-size:18px;margin:5px;padding:2px}textarea{resize:none;width:100%;height:200px;font-size:20px;font-family:inherit;}input{margin:3px}.closeContainer{display:-ms-flexbox;display:flex;-ms-flex-direction:row-reverse;flex-direction:row-reverse}.close{width:32px;height:32px;opacity:0.3}.close:hover{opacity:1}.close:before,.close:after{position:absolute;top:10vh;margin-left:12px;content:\" \";height:33px;width:2px;background-color:#333}.close:before{-webkit-transform:rotate(45deg);transform:rotate(45deg)}.close:after{-webkit-transform:rotate(-45deg);transform:rotate(-45deg)}";
 
 const AnnotationsDisplay = class {
     constructor(hostRef) {
@@ -58,11 +58,11 @@ const AnnotationsDisplay = class {
                 this.showInfo = false;
                 break;
             case "search_button":
-                this.handleSampleIdentifier(this.sampleIdentifier); // pass value to parents
+                this.handleSampleIdentifier(this.searchSampleIdentifier); // pass value to parents
                 break;
             case "reset_button":
-                this.sampleIdentifier = "";
-                this.handleSampleIdentifier(this.sampleIdentifier);
+                this.searchSampleIdentifier = "";
+                this.handleSampleIdentifier(this.searchSampleIdentifier);
                 break;
             default:
                 console.error("Unhandled click, id = ", clicked_id);
@@ -80,15 +80,18 @@ const AnnotationsDisplay = class {
             event.target.value = '';
         }
     }
-    updateSampleIdentifier(event) {
-        this.sampleIdentifier = event.target.value;
+    updateSearchSampleIdentifier(event) {
+        this.searchSampleIdentifier = event.target.value;
+    }
+    updatePostSampleIdentifier(event) {
+        this.postSampleIdentifier = event.target.value;
     }
     // POST new annotation to Throughput
     async submitAnnotation() {
         const annotation = {
             dbid: this.identifier,
             additionalType: this.additionalType,
-            id: this.link,
+            id: this.postSampleIdentifier,
             body: this.annotationText,
         };
         const url = "https://throughputdb.com/api/widget/";
@@ -129,13 +132,13 @@ const AnnotationsDisplay = class {
         let annotationElement;
         if (this.addAnnotation) {
             annotationElement =
-                index.h("div", null, index.h("textarea", { onInput: (event) => this.updateAnnotationText(event), onFocus: (event) => this.clearDefaultAnnotationText(event) }, this.DEFAULT_ANNOTATION_TEXT), index.h("button", { id: "submit_button", class: "add_button" }, "Submit"), index.h("button", { id: "cancel_button", class: "cancel_button" }, "Cancel"));
+                index.h("div", { class: "postInput" }, "Sample Identifier ", index.h("input", { type: "text", value: this.postSampleIdentifier, onInput: (event) => this.updatePostSampleIdentifier(event) }), index.h("textarea", { onInput: (event) => this.updateAnnotationText(event), onFocus: (event) => this.clearDefaultAnnotationText(event) }, this.DEFAULT_ANNOTATION_TEXT), index.h("button", { id: "submit_button", class: "add_button" }, "Submit"), index.h("button", { id: "cancel_button", class: "cancel_button" }, "Cancel"));
         }
         else {
             annotationElement = index.h("button", { id: "add_button", class: "add_button" }, "+ Add Annotation");
         }
         return (index.h("div", { class: "overlay" }, this.showInfo ? index.h("about-throughput", null) :
-            (index.h("div", { class: "annotation_list" }, index.h("div", { class: "closeContainer" }, index.h("a", { id: "close_x", class: "close" })), index.h("div", { class: "header" }, "Throughput Annotations ", index.h("a", { id: "info_i" }, "\u24D8")), index.h("div", { class: "body" }, !this.readOnlyMode ? (index.h("orcid-connect", { orcidClientId: this.orcidClientId, authenticated: this.authenticated, orcidName: this.orcidName })) : null, this.authenticated && annotationElement, " ", index.h("br", null), index.h("div", { class: "annotation_search" }, "Sample Identifier : ", index.h("input", { type: "text", value: this.sampleIdentifier, onInput: (event) => this.updateSampleIdentifier(event) }), index.h("button", { id: "search_button", class: "search_button" }, "Search"), index.h("button", { id: "reset_button", class: "search_button" }, "Reset")), this.annotations.map((annotation) => (index.h("div", { class: "annotation_item" }, annotation.annotation, index.h("div", { class: "annotation_metadata" }, index.h("div", { class: "annotation_author" }, annotation.annotationauthor ? annotation.annotationauthor : "[null author]"), index.h("div", { class: "orcidLink" }, index.h("a", { href: "https://orcid.org/" + annotation.orcid, target: "_blank" }, index.h("img", { id: "orcid-id-icon", src: "https://orcid.org/sites/default/files/images/orcid_24x24.png", width: "14", height: "14", alt: "ORCID iD icon" }))), index.h("div", { class: "annotation_author" }, "(", this.getFormattedDate(annotation.date), ")", " "))))))))));
+            (index.h("div", { class: "annotation_list" }, index.h("div", { class: "closeContainer" }, index.h("a", { id: "close_x", class: "close" })), index.h("div", { class: "header" }, "Throughput Annotations ", index.h("a", { id: "info_i" }, "\u24D8")), index.h("div", { class: "body" }, !this.readOnlyMode ? (index.h("orcid-connect", { orcidClientId: this.orcidClientId, authenticated: this.authenticated, orcidName: this.orcidName })) : null, this.authenticated && annotationElement, " ", index.h("br", null), index.h("div", { class: "annotation_search" }, "Sample Identifier : ", index.h("input", { type: "text", value: this.searchSampleIdentifier, onInput: (event) => this.updateSearchSampleIdentifier(event) }), index.h("button", { id: "search_button", class: "search_button" }, "Search"), index.h("button", { id: "reset_button", class: "search_button" }, "Reset")), this.annotations.map((annotation) => (index.h("div", { class: "annotation_item" }, annotation.annotation, index.h("div", { class: "annotation_metadata" }, index.h("div", { class: "annotation_author" }, annotation.annotationauthor ? annotation.annotationauthor : "[null author]"), index.h("div", { class: "orcidLink" }, index.h("a", { href: "https://orcid.org/" + annotation.orcid, target: "_blank" }, index.h("img", { id: "orcid-id-icon", src: "https://orcid.org/sites/default/files/images/orcid_24x24.png", width: "14", height: "14", alt: "ORCID iD icon" }))), index.h("div", { class: "annotation_author" }, "(", this.getFormattedDate(annotation.date), ")", " "))))))))));
     }
     static get assetsDirs() { return ["assets"]; }
 };
@@ -479,7 +482,7 @@ const ThroughputWidget = class {
         this.sampleIdentifier = ""; // identifier of sample that we want to find annotations associated with it 
     }
     annotationAddedHandler(_) {
-        this.getAnnotations();
+        this.getISamplesAnnotations();
     }
     orcidLogoutHandler(_) {
         this.logout();

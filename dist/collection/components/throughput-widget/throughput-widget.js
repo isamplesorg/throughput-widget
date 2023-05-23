@@ -13,7 +13,7 @@ export class ThroughputWidget {
         this.sampleIdentifier = ""; // identifier of sample that we want to find annotations associated with it 
     }
     annotationAddedHandler(_) {
-        this.getAnnotations();
+        this.getISamplesAnnotations();
     }
     orcidLogoutHandler(_) {
         this.logout();

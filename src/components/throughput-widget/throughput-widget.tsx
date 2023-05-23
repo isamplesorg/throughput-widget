@@ -22,7 +22,7 @@ export class ThroughputWidget {
 
   @Listen('annotationAdded')
   annotationAddedHandler(_: CustomEvent<void>) {
-    this.getAnnotations();
+    this.getISamplesAnnotations();
   }
 
   @Listen('orcidLogout')
