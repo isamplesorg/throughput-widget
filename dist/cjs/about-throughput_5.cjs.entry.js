@@ -16,7 +16,7 @@ const AboutThroughput = class {
 };
 AboutThroughput.style = aboutThroughputCss;
 
-const annotationsDisplayCss = ".overlay{cursor:default;position:fixed;z-index:100000;height:100%;width:100%;top:0px;left:0px;background-color:rgba(0, 0, 0, 0.5)}.annotation_list{display:-ms-flexbox;display:flex;-ms-flex-flow:column;flex-flow:column;z-index:100001;margin:10vh auto;width:50vw;max-height:80vh;min-width:300px;background-color:var(--modal-background-color, white);border-radius:4px}.annotation_item{color:var(--modal-font-color, black);font-weight:normal;background-color:var(--modal-card-color, white);padding:10px;-webkit-box-shadow:0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);box-shadow:0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);margin-bottom:10px;border-radius:4px;cursor:default;}.annotation_author{display:-ms-flexbox;display:flex;-ms-flex-direction:column;flex-direction:column;-ms-flex-pack:distribute;justify-content:space-around}.orcidLink{cursor:pointer;padding-right:10px;padding-left:3px;display:-ms-flexbox;display:flex;-ms-flex-direction:column;flex-direction:column;-ms-flex-pack:center;justify-content:center}.orcidLink a{display:-ms-flexbox;display:flex;-ms-flex-direction:column;flex-direction:column;-ms-flex-pack:center;justify-content:center}.annotation_metadata{font-size:smaller;display:-ms-flexbox;display:flex;-ms-flex-direction:row;flex-direction:row;-ms-flex-pack:start;justify-content:flex-start;padding-top:5px}.body{padding:20px;padding-top:0px;overflow-y:scroll;background-color:var(--modal-background-color, white);border-radius:4px;display:-ms-flexbox;display:flex;-ms-flex-direction:column;flex-direction:column}.header{color:#3b99e0;background-color:var(--modal-background-color, white);-webkit-box-shadow:0 0 0px rgba(0, 0, 0, 0.12), 0 2px 2px rgba(0, 0, 0, 0.24);box-shadow:0 0 0px rgba(0, 0, 0, 0.12), 0 2px 2px rgba(0, 0, 0, 0.24);z-index:10000000;font-size:20px;border-radius:4px;text-align:center;padding-bottom:25px}button{border:none;color:white;padding:5px;text-align:center;text-decoration:none;display:inline-block;font-size:18px;font-family:inherit;width:150px;border-radius:6px;cursor:pointer;margin:5px}.add_button{background-color:#4caf50;margin:auto}.add_button:hover{background-color:#3e8e41}.cancel_button{background-color:red}.cancel_button:hover{background-color:darkred}textarea{resize:none;width:100%;height:200px;font-size:20px;font-family:inherit;}.closeContainer{display:-ms-flexbox;display:flex;-ms-flex-direction:row-reverse;flex-direction:row-reverse}.close{width:32px;height:32px;opacity:0.3}.close:hover{opacity:1}.close:before,.close:after{position:absolute;top:10vh;margin-left:12px;content:\" \";height:33px;width:2px;background-color:#333}.close:before{-webkit-transform:rotate(45deg);transform:rotate(45deg)}.close:after{-webkit-transform:rotate(-45deg);transform:rotate(-45deg)}";
+const annotationsDisplayCss = ".overlay{cursor:default;position:fixed;z-index:100000;height:100%;width:100%;top:0px;left:0px;background-color:rgba(0, 0, 0, 0.5)}.annotation_list{display:-ms-flexbox;display:flex;-ms-flex-flow:column;flex-flow:column;z-index:100001;margin:10vh auto;width:50vw;max-height:80vh;min-width:300px;background-color:var(--modal-background-color, white);border-radius:4px}.annotation_item{color:var(--modal-font-color, black);font-weight:normal;background-color:var(--modal-card-color, white);padding:10px;-webkit-box-shadow:0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);box-shadow:0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);margin-bottom:10px;border-radius:4px;cursor:default;}.annotation_author{display:-ms-flexbox;display:flex;-ms-flex-direction:column;flex-direction:column;-ms-flex-pack:distribute;justify-content:space-around}.orcidLink{cursor:pointer;padding-right:10px;padding-left:3px;display:-ms-flexbox;display:flex;-ms-flex-direction:column;flex-direction:column;-ms-flex-pack:center;justify-content:center}.orcidLink a{display:-ms-flexbox;display:flex;-ms-flex-direction:column;flex-direction:column;-ms-flex-pack:center;justify-content:center}.annotation_metadata{font-size:smaller;display:-ms-flexbox;display:flex;-ms-flex-direction:row;flex-direction:row;-ms-flex-pack:start;justify-content:flex-start;padding-top:5px}.annotation_search{font-size:18px;padding:3px}.body{padding:20px;padding-top:0px;overflow-y:scroll;background-color:var(--modal-background-color, white);border-radius:4px;display:-ms-flexbox;display:flex;-ms-flex-direction:column;flex-direction:column}.header{color:#3b99e0;background-color:var(--modal-background-color, white);-webkit-box-shadow:0 0 0px rgba(0, 0, 0, 0.12), 0 2px 2px rgba(0, 0, 0, 0.24);box-shadow:0 0 0px rgba(0, 0, 0, 0.12), 0 2px 2px rgba(0, 0, 0, 0.24);z-index:10000000;font-size:20px;border-radius:4px;text-align:center;padding-bottom:25px}button{border:none;color:white;padding:5px;text-align:center;text-decoration:none;display:inline-block;font-size:18px;font-family:inherit;width:150px;border-radius:6px;cursor:pointer;margin:5px}.search_button{background-color:#4caf50;font-size:15px;width:auto;margin:3px}.add_button{background-color:#4caf50;margin:auto}.add_button:hover{background-color:#3e8e41}.cancel_button{background-color:red}.cancel_button:hover{background-color:darkred}textarea{resize:none;width:100%;height:200px;font-size:20px;font-family:inherit;}input{margin:3px}.closeContainer{display:-ms-flexbox;display:flex;-ms-flex-direction:row-reverse;flex-direction:row-reverse}.close{width:32px;height:32px;opacity:0.3}.close:hover{opacity:1}.close:before,.close:after{position:absolute;top:10vh;margin-left:12px;content:\" \";height:33px;width:2px;background-color:#333}.close:before{-webkit-transform:rotate(45deg);transform:rotate(45deg)}.close:after{-webkit-transform:rotate(-45deg);transform:rotate(-45deg)}";
 
 const AnnotationsDisplay = class {
     constructor(hostRef) {
@@ -57,6 +57,13 @@ const AnnotationsDisplay = class {
             case "close_about_x": // close_about_x lives in AboutThroughput
                 this.showInfo = false;
                 break;
+            case "search_button":
+                this.handleSampleIdentifier(this.sampleIdentifier); // pass value to parents
+                break;
+            case "reset_button":
+                this.sampleIdentifier = "";
+                this.handleSampleIdentifier(this.sampleIdentifier);
+                break;
             default:
                 console.error("Unhandled click, id = ", clicked_id);
         }
@@ -72,6 +79,9 @@ const AnnotationsDisplay = class {
         if (event.target.value === this.DEFAULT_ANNOTATION_TEXT) {
             event.target.value = '';
         }
+    }
+    updateSampleIdentifier(event) {
+        this.sampleIdentifier = event.target.value;
     }
     // POST new annotation to Throughput
     async submitAnnotation() {
@@ -125,7 +135,7 @@ const AnnotationsDisplay = class {
             annotationElement = index.h("button", { id: "add_button", class: "add_button" }, "+ Add Annotation");
         }
         return (index.h("div", { class: "overlay" }, this.showInfo ? index.h("about-throughput", null) :
-            (index.h("div", { class: "annotation_list" }, index.h("div", { class: "closeContainer" }, index.h("a", { id: "close_x", class: "close" })), index.h("div", { class: "header" }, "Throughput Annotations ", index.h("a", { id: "info_i" }, "\u24D8")), index.h("div", { class: "body" }, !this.readOnlyMode ? (index.h("orcid-connect", { orcidClientId: this.orcidClientId, authenticated: this.authenticated, orcidName: this.orcidName })) : null, this.authenticated && annotationElement, this.annotations.map((annotation) => (index.h("div", { class: "annotation_item" }, annotation.annotation, index.h("div", { class: "annotation_metadata" }, index.h("div", { class: "annotation_author" }, annotation.annotationauthor ? annotation.annotationauthor : "[null author]"), index.h("div", { class: "orcidLink" }, index.h("a", { href: "https://orcid.org/" + annotation.orcid, target: "_blank" }, index.h("img", { id: "orcid-id-icon", src: "https://orcid.org/sites/default/files/images/orcid_24x24.png", width: "14", height: "14", alt: "ORCID iD icon" }))), index.h("div", { class: "annotation_author" }, "(", this.getFormattedDate(annotation.date), ")", " "))))))))));
+            (index.h("div", { class: "annotation_list" }, index.h("div", { class: "closeContainer" }, index.h("a", { id: "close_x", class: "close" })), index.h("div", { class: "header" }, "Throughput Annotations ", index.h("a", { id: "info_i" }, "\u24D8")), index.h("div", { class: "body" }, !this.readOnlyMode ? (index.h("orcid-connect", { orcidClientId: this.orcidClientId, authenticated: this.authenticated, orcidName: this.orcidName })) : null, this.authenticated && annotationElement, " ", index.h("br", null), index.h("div", { class: "annotation_search" }, "Sample Identifier : ", index.h("input", { type: "text", onInput: (event) => this.updateSampleIdentifier(event) }), index.h("button", { id: "search_button", class: "search_button" }, "Search"), index.h("button", { id: "reset_button", class: "search_button" }, "Reset")), this.annotations.map((annotation) => (index.h("div", { class: "annotation_item" }, annotation.annotation, index.h("div", { class: "annotation_metadata" }, index.h("div", { class: "annotation_author" }, annotation.annotationauthor ? annotation.annotationauthor : "[null author]"), index.h("div", { class: "orcidLink" }, index.h("a", { href: "https://orcid.org/" + annotation.orcid, target: "_blank" }, index.h("img", { id: "orcid-id-icon", src: "https://orcid.org/sites/default/files/images/orcid_24x24.png", width: "14", height: "14", alt: "ORCID iD icon" }))), index.h("div", { class: "annotation_author" }, "(", this.getFormattedDate(annotation.date), ")", " "))))))))));
     }
     static get assetsDirs() { return ["assets"]; }
 };
@@ -176,7 +186,7 @@ const DataDisplay = class {
         return text;
     }
     render() {
-        return (index.h("div", { class: "badge", "title-": "Throughput Annotation Widget. Learn more at throughputdb.com" }, index.h("div", { class: 'throughput-logo' }, index.h("img", { src: "https://github.com/throughput-ec/widget/blob/master/figures/TPlogo_small.png?raw=true", title: "Throughput" })), index.h("div", { class: "summary-container" }, index.h("div", { class: "summary" }, this.getCountText()), index.h("div", { class: "helptext" }, this.getHelpText())), this.open ? (index.h("annotations-display", { annotations: this.annotations, authenticated: this.authenticated, orcidName: this.orcidName, throughputToken: this.throughputToken, identifier: this.identifier, additionalType: this.additionalType, link: this.link, readOnlyMode: this.readOnlyMode, orcidClientId: this.orcidClientId })) : null));
+        return (index.h("div", { class: "badge", "title-": "Throughput Annotation Widget. Learn more at throughputdb.com" }, index.h("div", { class: 'throughput-logo' }, index.h("img", { src: "https://github.com/throughput-ec/widget/blob/master/figures/TPlogo_small.png?raw=true", title: "Throughput" })), index.h("div", { class: "summary-container" }, index.h("div", { class: "summary" }, this.getCountText()), index.h("div", { class: "helptext" }, this.getHelpText())), this.open ? (index.h("annotations-display", { annotations: this.annotations, authenticated: this.authenticated, orcidName: this.orcidName, throughputToken: this.throughputToken, identifier: this.identifier, additionalType: this.additionalType, link: this.link, readOnlyMode: this.readOnlyMode, orcidClientId: this.orcidClientId, handleSampleIdentifier: this.handleSampleIdentifier })) : null));
     }
     static get assetsDirs() { return ["assets"]; }
 };
@@ -465,6 +475,8 @@ const ThroughputWidget = class {
         this.orcidClientId = null; // ORCID API key; required if readOnlyMode = false
         this.authenticated = false;
         this.throughputToken = null;
+        this.iSamplesDbId = "r3d100011761"; // TODO : determine this value after registration to Throughput
+        this.sampleIdentifier = ""; // identifier of sample that we want to find annotations associated with it 
     }
     annotationAddedHandler(_) {
         this.getAnnotations();
@@ -487,7 +499,13 @@ const ThroughputWidget = class {
         else {
             console.log("non-ORCID auth hash found, ignoring");
         }
-        this.getAnnotations();
+        if (this.sampleIdentifier !== "") {
+            // fetch annotations associated with identifier if initialized
+            this.getSampleAnnotations();
+        }
+        else {
+            this.getISamplesAnnotations();
+        }
     }
     // Check Throughput authentication state.
     checkAuth() {
@@ -566,6 +584,35 @@ const ThroughputWidget = class {
             });
         });
     }
+    // Pull annotations associated with iSamples
+    getISamplesAnnotations() {
+        const ANNOTATION_SEARCH_ENDPOINT = "https://throughputdb.com/api/ccdrs/annotations?";
+        const params = new URLSearchParams({
+            dbid: this.iSamplesDbId
+        });
+        fetch(ANNOTATION_SEARCH_ENDPOINT + params).then((response) => {
+            response.json().then((json) => {
+                console.log(json);
+                this.annotations = json.data;
+            });
+        });
+    }
+    // Pull iSamples annotations associated with given identifier id 
+    getSampleAnnotations() {
+        const ANNOTATION_SEARCH_ENDPOINT = "https://throughputdb.com/api/ccdrs/annotations?";
+        const params = new URLSearchParams({
+            dbid: this.iSamplesDbId,
+            additionalType: this.additionalType,
+            id: this.sampleIdentifier,
+            limit: "9999"
+        });
+        fetch(ANNOTATION_SEARCH_ENDPOINT + params).then((response) => {
+            response.json().then((json) => {
+                console.log(json);
+                this.annotations = json.data;
+            });
+        });
+    }
     // Clear authentication data in localStorage, reset auth state variables.
     logout() {
         window.localStorage.removeItem("ThroughputWidgetToken");
@@ -613,9 +660,19 @@ const ThroughputWidget = class {
             gracePeriod: 15 * 60,
         });
     }
+    handleSampleIdentifier(sampleIdentifier) {
+        // update state value from the passed value of children
+        this.sampleIdentifier = sampleIdentifier; // update the sample identifier value from received
+        if (this.sampleIdentifier !== "") {
+            this.getSampleAnnotations();
+        }
+        else {
+            this.getISamplesAnnotations();
+        }
+    }
     render() {
         return this.hasRequiredProps() ?
-            (index.h("div", null, index.h("data-display", { annotations: this.annotations, authenticated: this.authenticated, orcidName: this.orcidName, throughputToken: this.throughputToken, identifier: this.identifier, additionalType: this.additionalType, link: this.link, readOnlyMode: this.readOnlyMode, orcidClientId: this.orcidClientId }))) : "Error: see console for details.";
+            (index.h("div", null, index.h("data-display", { annotations: this.annotations, authenticated: this.authenticated, orcidName: this.orcidName, throughputToken: this.throughputToken, identifier: this.identifier, additionalType: this.additionalType, link: this.link, readOnlyMode: this.readOnlyMode, orcidClientId: this.orcidClientId, handleSampleIdentifier: this.handleSampleIdentifier.bind(this) }))) : "Error: see console for details.";
     }
 };
 ThroughputWidget.style = throughputWidgetCss;

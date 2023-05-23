@@ -46,7 +46,7 @@ var AboutThroughput = /** @class */ (function () {
     return AboutThroughput;
 }());
 AboutThroughput.style = aboutThroughputCss;
-var annotationsDisplayCss = ".overlay{cursor:default;position:fixed;z-index:100000;height:100%;width:100%;top:0px;left:0px;background-color:rgba(0, 0, 0, 0.5)}.annotation_list{display:-ms-flexbox;display:flex;-ms-flex-flow:column;flex-flow:column;z-index:100001;margin:10vh auto;width:50vw;max-height:80vh;min-width:300px;background-color:var(--modal-background-color, white);border-radius:4px}.annotation_item{color:var(--modal-font-color, black);font-weight:normal;background-color:var(--modal-card-color, white);padding:10px;-webkit-box-shadow:0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);box-shadow:0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);margin-bottom:10px;border-radius:4px;cursor:default;}.annotation_author{display:-ms-flexbox;display:flex;-ms-flex-direction:column;flex-direction:column;-ms-flex-pack:distribute;justify-content:space-around}.orcidLink{cursor:pointer;padding-right:10px;padding-left:3px;display:-ms-flexbox;display:flex;-ms-flex-direction:column;flex-direction:column;-ms-flex-pack:center;justify-content:center}.orcidLink a{display:-ms-flexbox;display:flex;-ms-flex-direction:column;flex-direction:column;-ms-flex-pack:center;justify-content:center}.annotation_metadata{font-size:smaller;display:-ms-flexbox;display:flex;-ms-flex-direction:row;flex-direction:row;-ms-flex-pack:start;justify-content:flex-start;padding-top:5px}.body{padding:20px;padding-top:0px;overflow-y:scroll;background-color:var(--modal-background-color, white);border-radius:4px;display:-ms-flexbox;display:flex;-ms-flex-direction:column;flex-direction:column}.header{color:#3b99e0;background-color:var(--modal-background-color, white);-webkit-box-shadow:0 0 0px rgba(0, 0, 0, 0.12), 0 2px 2px rgba(0, 0, 0, 0.24);box-shadow:0 0 0px rgba(0, 0, 0, 0.12), 0 2px 2px rgba(0, 0, 0, 0.24);z-index:10000000;font-size:20px;border-radius:4px;text-align:center;padding-bottom:25px}button{border:none;color:white;padding:5px;text-align:center;text-decoration:none;display:inline-block;font-size:18px;font-family:inherit;width:150px;border-radius:6px;cursor:pointer;margin:5px}.add_button{background-color:#4caf50;margin:auto}.add_button:hover{background-color:#3e8e41}.cancel_button{background-color:red}.cancel_button:hover{background-color:darkred}textarea{resize:none;width:100%;height:200px;font-size:20px;font-family:inherit;}.closeContainer{display:-ms-flexbox;display:flex;-ms-flex-direction:row-reverse;flex-direction:row-reverse}.close{width:32px;height:32px;opacity:0.3}.close:hover{opacity:1}.close:before,.close:after{position:absolute;top:10vh;margin-left:12px;content:\" \";height:33px;width:2px;background-color:#333}.close:before{-webkit-transform:rotate(45deg);transform:rotate(45deg)}.close:after{-webkit-transform:rotate(-45deg);transform:rotate(-45deg)}";
+var annotationsDisplayCss = ".overlay{cursor:default;position:fixed;z-index:100000;height:100%;width:100%;top:0px;left:0px;background-color:rgba(0, 0, 0, 0.5)}.annotation_list{display:-ms-flexbox;display:flex;-ms-flex-flow:column;flex-flow:column;z-index:100001;margin:10vh auto;width:50vw;max-height:80vh;min-width:300px;background-color:var(--modal-background-color, white);border-radius:4px}.annotation_item{color:var(--modal-font-color, black);font-weight:normal;background-color:var(--modal-card-color, white);padding:10px;-webkit-box-shadow:0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);box-shadow:0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);margin-bottom:10px;border-radius:4px;cursor:default;}.annotation_author{display:-ms-flexbox;display:flex;-ms-flex-direction:column;flex-direction:column;-ms-flex-pack:distribute;justify-content:space-around}.orcidLink{cursor:pointer;padding-right:10px;padding-left:3px;display:-ms-flexbox;display:flex;-ms-flex-direction:column;flex-direction:column;-ms-flex-pack:center;justify-content:center}.orcidLink a{display:-ms-flexbox;display:flex;-ms-flex-direction:column;flex-direction:column;-ms-flex-pack:center;justify-content:center}.annotation_metadata{font-size:smaller;display:-ms-flexbox;display:flex;-ms-flex-direction:row;flex-direction:row;-ms-flex-pack:start;justify-content:flex-start;padding-top:5px}.annotation_search{font-size:18px;padding:3px}.body{padding:20px;padding-top:0px;overflow-y:scroll;background-color:var(--modal-background-color, white);border-radius:4px;display:-ms-flexbox;display:flex;-ms-flex-direction:column;flex-direction:column}.header{color:#3b99e0;background-color:var(--modal-background-color, white);-webkit-box-shadow:0 0 0px rgba(0, 0, 0, 0.12), 0 2px 2px rgba(0, 0, 0, 0.24);box-shadow:0 0 0px rgba(0, 0, 0, 0.12), 0 2px 2px rgba(0, 0, 0, 0.24);z-index:10000000;font-size:20px;border-radius:4px;text-align:center;padding-bottom:25px}button{border:none;color:white;padding:5px;text-align:center;text-decoration:none;display:inline-block;font-size:18px;font-family:inherit;width:150px;border-radius:6px;cursor:pointer;margin:5px}.search_button{background-color:#4caf50;font-size:15px;width:auto;margin:3px}.add_button{background-color:#4caf50;margin:auto}.add_button:hover{background-color:#3e8e41}.cancel_button{background-color:red}.cancel_button:hover{background-color:darkred}textarea{resize:none;width:100%;height:200px;font-size:20px;font-family:inherit;}input{margin:3px}.closeContainer{display:-ms-flexbox;display:flex;-ms-flex-direction:row-reverse;flex-direction:row-reverse}.close{width:32px;height:32px;opacity:0.3}.close:hover{opacity:1}.close:before,.close:after{position:absolute;top:10vh;margin-left:12px;content:\" \";height:33px;width:2px;background-color:#333}.close:before{-webkit-transform:rotate(45deg);transform:rotate(45deg)}.close:after{-webkit-transform:rotate(-45deg);transform:rotate(-45deg)}";
 var AnnotationsDisplay = /** @class */ (function () {
     function class_1(hostRef) {
         registerInstance(this, hostRef);
@@ -75,38 +75,47 @@ var AnnotationsDisplay = /** @class */ (function () {
                             case "info_i": return [3 /*break*/, 6];
                             case "close_x": return [3 /*break*/, 7];
                             case "close_about_x": return [3 /*break*/, 8];
+                            case "search_button": return [3 /*break*/, 9];
+                            case "reset_button": return [3 /*break*/, 10];
                         }
-                        return [3 /*break*/, 9];
+                        return [3 /*break*/, 11];
                     case 1:
                         this.showInfo = true;
-                        return [3 /*break*/, 10];
+                        return [3 /*break*/, 12];
                     case 2:
                         this.addAnnotation = true;
-                        return [3 /*break*/, 10];
+                        return [3 /*break*/, 12];
                     case 3:
                         console.log("Submit clicked");
                         return [4 /*yield*/, this.submitAnnotation()];
                     case 4:
                         success = _b.sent();
                         this.addAnnotation = !success; // close add annotation UI if submit succeeds
-                        return [3 /*break*/, 10];
+                        return [3 /*break*/, 12];
                     case 5:
                         this.addAnnotation = false;
-                        return [3 /*break*/, 10];
+                        return [3 /*break*/, 12];
                     case 6:
                         alert("Here's a blurb about the Throughput Database! Learn more at throughputdb.com");
-                        return [3 /*break*/, 10];
+                        return [3 /*break*/, 12];
                     case 7: 
                     // Ignore close_x here, it's handled in DataDisplay.handleClick(), which
                     // is called after this.handleClick(). Otherwise we hit default below.
-                    return [3 /*break*/, 10];
+                    return [3 /*break*/, 12];
                     case 8:
                         this.showInfo = false;
-                        return [3 /*break*/, 10];
+                        return [3 /*break*/, 12];
                     case 9:
+                        this.handleSampleIdentifier(this.sampleIdentifier); // pass value to parents
+                        return [3 /*break*/, 12];
+                    case 10:
+                        this.sampleIdentifier = "";
+                        this.handleSampleIdentifier(this.sampleIdentifier);
+                        return [3 /*break*/, 12];
+                    case 11:
                         console.error("Unhandled click, id = ", clicked_id);
-                        _b.label = 10;
-                    case 10: return [2 /*return*/];
+                        _b.label = 12;
+                    case 12: return [2 /*return*/];
                 }
             });
         });
@@ -122,6 +131,9 @@ var AnnotationsDisplay = /** @class */ (function () {
         if (event.target.value === this.DEFAULT_ANNOTATION_TEXT) {
             event.target.value = '';
         }
+    };
+    class_1.prototype.updateSampleIdentifier = function (event) {
+        this.sampleIdentifier = event.target.value;
     };
     // POST new annotation to Throughput
     class_1.prototype.submitAnnotation = function () {
@@ -188,7 +200,7 @@ var AnnotationsDisplay = /** @class */ (function () {
             annotationElement = h("button", { id: "add_button", class: "add_button" }, "+ Add Annotation");
         }
         return (h("div", { class: "overlay" }, this.showInfo ? h("about-throughput", null) :
-            (h("div", { class: "annotation_list" }, h("div", { class: "closeContainer" }, h("a", { id: "close_x", class: "close" })), h("div", { class: "header" }, "Throughput Annotations ", h("a", { id: "info_i" }, "\u24D8")), h("div", { class: "body" }, !this.readOnlyMode ? (h("orcid-connect", { orcidClientId: this.orcidClientId, authenticated: this.authenticated, orcidName: this.orcidName })) : null, this.authenticated && annotationElement, this.annotations.map(function (annotation) { return (h("div", { class: "annotation_item" }, annotation.annotation, h("div", { class: "annotation_metadata" }, h("div", { class: "annotation_author" }, annotation.annotationauthor ? annotation.annotationauthor : "[null author]"), h("div", { class: "orcidLink" }, h("a", { href: "https://orcid.org/" + annotation.orcid, target: "_blank" }, h("img", { id: "orcid-id-icon", src: "https://orcid.org/sites/default/files/images/orcid_24x24.png", width: "14", height: "14", alt: "ORCID iD icon" }))), h("div", { class: "annotation_author" }, "(", _this.getFormattedDate(annotation.date), ")", " ")))); }))))));
+            (h("div", { class: "annotation_list" }, h("div", { class: "closeContainer" }, h("a", { id: "close_x", class: "close" })), h("div", { class: "header" }, "Throughput Annotations ", h("a", { id: "info_i" }, "\u24D8")), h("div", { class: "body" }, !this.readOnlyMode ? (h("orcid-connect", { orcidClientId: this.orcidClientId, authenticated: this.authenticated, orcidName: this.orcidName })) : null, this.authenticated && annotationElement, " ", h("br", null), h("div", { class: "annotation_search" }, "Sample Identifier : ", h("input", { type: "text", onInput: function (event) { return _this.updateSampleIdentifier(event); } }), h("button", { id: "search_button", class: "search_button" }, "Search"), h("button", { id: "reset_button", class: "search_button" }, "Reset")), this.annotations.map(function (annotation) { return (h("div", { class: "annotation_item" }, annotation.annotation, h("div", { class: "annotation_metadata" }, h("div", { class: "annotation_author" }, annotation.annotationauthor ? annotation.annotationauthor : "[null author]"), h("div", { class: "orcidLink" }, h("a", { href: "https://orcid.org/" + annotation.orcid, target: "_blank" }, h("img", { id: "orcid-id-icon", src: "https://orcid.org/sites/default/files/images/orcid_24x24.png", width: "14", height: "14", alt: "ORCID iD icon" }))), h("div", { class: "annotation_author" }, "(", _this.getFormattedDate(annotation.date), ")", " ")))); }))))));
     };
     Object.defineProperty(class_1, "assetsDirs", {
         get: function () { return ["assets"]; },
@@ -242,7 +254,7 @@ var DataDisplay = /** @class */ (function () {
         return text;
     };
     DataDisplay.prototype.render = function () {
-        return (h("div", { class: "badge", "title-": "Throughput Annotation Widget. Learn more at throughputdb.com" }, h("div", { class: 'throughput-logo' }, h("img", { src: "https://github.com/throughput-ec/widget/blob/master/figures/TPlogo_small.png?raw=true", title: "Throughput" })), h("div", { class: "summary-container" }, h("div", { class: "summary" }, this.getCountText()), h("div", { class: "helptext" }, this.getHelpText())), this.open ? (h("annotations-display", { annotations: this.annotations, authenticated: this.authenticated, orcidName: this.orcidName, throughputToken: this.throughputToken, identifier: this.identifier, additionalType: this.additionalType, link: this.link, readOnlyMode: this.readOnlyMode, orcidClientId: this.orcidClientId })) : null));
+        return (h("div", { class: "badge", "title-": "Throughput Annotation Widget. Learn more at throughputdb.com" }, h("div", { class: 'throughput-logo' }, h("img", { src: "https://github.com/throughput-ec/widget/blob/master/figures/TPlogo_small.png?raw=true", title: "Throughput" })), h("div", { class: "summary-container" }, h("div", { class: "summary" }, this.getCountText()), h("div", { class: "helptext" }, this.getHelpText())), this.open ? (h("annotations-display", { annotations: this.annotations, authenticated: this.authenticated, orcidName: this.orcidName, throughputToken: this.throughputToken, identifier: this.identifier, additionalType: this.additionalType, link: this.link, readOnlyMode: this.readOnlyMode, orcidClientId: this.orcidClientId, handleSampleIdentifier: this.handleSampleIdentifier })) : null));
     };
     Object.defineProperty(DataDisplay, "assetsDirs", {
         get: function () { return ["assets"]; },
@@ -8334,6 +8346,8 @@ var ThroughputWidget = /** @class */ (function () {
         this.orcidClientId = null; // ORCID API key; required if readOnlyMode = false
         this.authenticated = false;
         this.throughputToken = null;
+        this.iSamplesDbId = "r3d100011761"; // TODO : determine this value after registration to Throughput
+        this.sampleIdentifier = ""; // identifier of sample that we want to find annotations associated with it 
     }
     class_2.prototype.annotationAddedHandler = function (_) {
         this.getAnnotations();
@@ -8356,7 +8370,13 @@ var ThroughputWidget = /** @class */ (function () {
         else {
             console.log("non-ORCID auth hash found, ignoring");
         }
-        this.getAnnotations();
+        if (this.sampleIdentifier !== "") {
+            // fetch annotations associated with identifier if initialized
+            this.getSampleAnnotations();
+        }
+        else {
+            this.getISamplesAnnotations();
+        }
     };
     // Check Throughput authentication state.
     class_2.prototype.checkAuth = function () {
@@ -8445,6 +8465,37 @@ var ThroughputWidget = /** @class */ (function () {
             });
         });
     };
+    // Pull annotations associated with iSamples
+    class_2.prototype.getISamplesAnnotations = function () {
+        var _this = this;
+        var ANNOTATION_SEARCH_ENDPOINT = "https://throughputdb.com/api/ccdrs/annotations?";
+        var params = new URLSearchParams({
+            dbid: this.iSamplesDbId
+        });
+        fetch(ANNOTATION_SEARCH_ENDPOINT + params).then(function (response) {
+            response.json().then(function (json) {
+                console.log(json);
+                _this.annotations = json.data;
+            });
+        });
+    };
+    // Pull iSamples annotations associated with given identifier id 
+    class_2.prototype.getSampleAnnotations = function () {
+        var _this = this;
+        var ANNOTATION_SEARCH_ENDPOINT = "https://throughputdb.com/api/ccdrs/annotations?";
+        var params = new URLSearchParams({
+            dbid: this.iSamplesDbId,
+            additionalType: this.additionalType,
+            id: this.sampleIdentifier,
+            limit: "9999"
+        });
+        fetch(ANNOTATION_SEARCH_ENDPOINT + params).then(function (response) {
+            response.json().then(function (json) {
+                console.log(json);
+                _this.annotations = json.data;
+            });
+        });
+    };
     // Clear authentication data in localStorage, reset auth state variables.
     class_2.prototype.logout = function () {
         window.localStorage.removeItem("ThroughputWidgetToken");
@@ -8492,9 +8543,19 @@ var ThroughputWidget = /** @class */ (function () {
             gracePeriod: 15 * 60,
         });
     };
+    class_2.prototype.handleSampleIdentifier = function (sampleIdentifier) {
+        // update state value from the passed value of children
+        this.sampleIdentifier = sampleIdentifier; // update the sample identifier value from received
+        if (this.sampleIdentifier !== "") {
+            this.getSampleAnnotations();
+        }
+        else {
+            this.getISamplesAnnotations();
+        }
+    };
     class_2.prototype.render = function () {
         return this.hasRequiredProps() ?
-            (h("div", null, h("data-display", { annotations: this.annotations, authenticated: this.authenticated, orcidName: this.orcidName, throughputToken: this.throughputToken, identifier: this.identifier, additionalType: this.additionalType, link: this.link, readOnlyMode: this.readOnlyMode, orcidClientId: this.orcidClientId }))) : "Error: see console for details.";
+            (h("div", null, h("data-display", { annotations: this.annotations, authenticated: this.authenticated, orcidName: this.orcidName, throughputToken: this.throughputToken, identifier: this.identifier, additionalType: this.additionalType, link: this.link, readOnlyMode: this.readOnlyMode, orcidClientId: this.orcidClientId, handleSampleIdentifier: this.handleSampleIdentifier.bind(this) }))) : "Error: see console for details.";
     };
     return class_2;
 }());

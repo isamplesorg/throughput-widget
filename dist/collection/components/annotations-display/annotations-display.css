@@ -70,6 +70,11 @@
   padding-top: 5px;
 }
 
+.annotation_search{
+  font-size: 18px; 
+  padding: 3px;
+}
+
 .body {
   /* flex: 1 1 auto; */
   padding: 20px;
@@ -109,6 +114,13 @@ button {
   margin: 5px;
 }
 
+.search_button {
+  background-color: #4caf50; /* Green */
+  font-size: 15px;
+  width: auto;
+  margin: 3px;
+}
+
 .add_button {
   background-color: #4caf50; /* Green */
   margin: auto;
@@ -131,6 +143,10 @@ textarea {
   font-size: 20px;
   font-family: inherit;
   /* padding: 10px 20px; */
+}
+
+input {
+  margin: 3px;
 }
 
 .closeContainer {

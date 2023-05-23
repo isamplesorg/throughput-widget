@@ -47,7 +47,7 @@ export class DataDisplay {
             h("div", { class: "summary-container" },
                 h("div", { class: "summary" }, this.getCountText()),
                 h("div", { class: "helptext" }, this.getHelpText())),
-            this.open ? (h("annotations-display", { annotations: this.annotations, authenticated: this.authenticated, orcidName: this.orcidName, throughputToken: this.throughputToken, identifier: this.identifier, additionalType: this.additionalType, link: this.link, readOnlyMode: this.readOnlyMode, orcidClientId: this.orcidClientId })) : null));
+            this.open ? (h("annotations-display", { annotations: this.annotations, authenticated: this.authenticated, orcidName: this.orcidName, throughputToken: this.throughputToken, identifier: this.identifier, additionalType: this.additionalType, link: this.link, readOnlyMode: this.readOnlyMode, orcidClientId: this.orcidClientId, handleSampleIdentifier: this.handleSampleIdentifier })) : null));
     }
     static get is() { return "data-display"; }
     static get encapsulation() { return "shadow"; }
@@ -214,6 +214,25 @@ export class DataDisplay {
             },
             "attribute": "orcid-client-id",
             "reflect": false
+        },
+        "handleSampleIdentifier": {
+            "type": "unknown",
+            "mutable": false,
+            "complexType": {
+                "original": "Function",
+                "resolved": "Function",
+                "references": {
+                    "Function": {
+                        "location": "global"
+                    }
+                }
+            },
+            "required": false,
+            "optional": false,
+            "docs": {
+                "tags": [],
+                "text": ""
+            }
         }
     }; }
     static get states() { return {

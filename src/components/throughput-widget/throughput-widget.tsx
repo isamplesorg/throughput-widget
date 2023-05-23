@@ -18,7 +18,7 @@ export class ThroughputWidget {
   @State() orcidName: string; // if authenticated, user's name in ORCID
   @State() throughputToken: string = null;
   @State() iSamplesDbId: string = "r3d100011761"; // TODO : determine this value after registration to Throughput
-  @State() sampleIdentifier: string = null; // identifier of sample that we want to find annotations associated with it 
+  @State() sampleIdentifier: string = ""; // identifier of sample that we want to find annotations associated with it 
 
   @Listen('annotationAdded')
   annotationAddedHandler(_: CustomEvent<void>) {
@@ -48,11 +48,11 @@ export class ThroughputWidget {
     } else {
       console.log("non-ORCID auth hash found, ignoring");
     }
-    if (this.sampleIdentifier){
+    if (this.sampleIdentifier !== ""){
       // fetch annotations associated with identifier if initialized
       this.getSampleAnnotations();
     } else {
-      this.getAnnotations();
+      this.getISamplesAnnotations();
     }
   }
 
@@ -150,7 +150,6 @@ export class ThroughputWidget {
 
   // Pull iSamples annotations associated with given identifier id 
   getSampleAnnotations () {
-    alert(this.sampleIdentifier);
     const ANNOTATION_SEARCH_ENDPOINT = "https://throughputdb.com/api/ccdrs/annotations?";
     const params = new URLSearchParams({
         dbid: this.iSamplesDbId,
@@ -221,9 +220,12 @@ export class ThroughputWidget {
 
   handleSampleIdentifier(sampleIdentifier) {
     // update state value from the passed value of children
-    alert(`passed to widget parent ${sampleIdentifier}`)
     this.sampleIdentifier = sampleIdentifier; // update the sample identifier value from received
-    this.getSampleAnnotations();
+    if (this.sampleIdentifier !== ""){
+      this.getSampleAnnotations();
+    } else {
+      this.getISamplesAnnotations();
+    }
   }
 
 

@@ -9,6 +9,8 @@ export class ThroughputWidget {
         this.orcidClientId = null; // ORCID API key; required if readOnlyMode = false
         this.authenticated = false;
         this.throughputToken = null;
+        this.iSamplesDbId = "r3d100011761"; // TODO : determine this value after registration to Throughput
+        this.sampleIdentifier = ""; // identifier of sample that we want to find annotations associated with it 
     }
     annotationAddedHandler(_) {
         this.getAnnotations();
@@ -31,7 +33,13 @@ export class ThroughputWidget {
         else {
             console.log("non-ORCID auth hash found, ignoring");
         }
-        this.getAnnotations();
+        if (this.sampleIdentifier !== "") {
+            // fetch annotations associated with identifier if initialized
+            this.getSampleAnnotations();
+        }
+        else {
+            this.getISamplesAnnotations();
+        }
     }
     // Check Throughput authentication state.
     checkAuth() {
@@ -110,6 +118,35 @@ export class ThroughputWidget {
             });
         });
     }
+    // Pull annotations associated with iSamples
+    getISamplesAnnotations() {
+        const ANNOTATION_SEARCH_ENDPOINT = "https://throughputdb.com/api/ccdrs/annotations?";
+        const params = new URLSearchParams({
+            dbid: this.iSamplesDbId
+        });
+        fetch(ANNOTATION_SEARCH_ENDPOINT + params).then((response) => {
+            response.json().then((json) => {
+                console.log(json);
+                this.annotations = json.data;
+            });
+        });
+    }
+    // Pull iSamples annotations associated with given identifier id 
+    getSampleAnnotations() {
+        const ANNOTATION_SEARCH_ENDPOINT = "https://throughputdb.com/api/ccdrs/annotations?";
+        const params = new URLSearchParams({
+            dbid: this.iSamplesDbId,
+            additionalType: this.additionalType,
+            id: this.sampleIdentifier,
+            limit: "9999"
+        });
+        fetch(ANNOTATION_SEARCH_ENDPOINT + params).then((response) => {
+            response.json().then((json) => {
+                console.log(json);
+                this.annotations = json.data;
+            });
+        });
+    }
     // Clear authentication data in localStorage, reset auth state variables.
     logout() {
         window.localStorage.removeItem("ThroughputWidgetToken");
@@ -157,10 +194,20 @@ export class ThroughputWidget {
             gracePeriod: 15 * 60,
         });
     }
+    handleSampleIdentifier(sampleIdentifier) {
+        // update state value from the passed value of children
+        this.sampleIdentifier = sampleIdentifier; // update the sample identifier value from received
+        if (this.sampleIdentifier !== "") {
+            this.getSampleAnnotations();
+        }
+        else {
+            this.getISamplesAnnotations();
+        }
+    }
     render() {
         return this.hasRequiredProps() ?
             (h("div", null,
-                h("data-display", { annotations: this.annotations, authenticated: this.authenticated, orcidName: this.orcidName, throughputToken: this.throughputToken, identifier: this.identifier, additionalType: this.additionalType, link: this.link, readOnlyMode: this.readOnlyMode, orcidClientId: this.orcidClientId }))) : "Error: see console for details.";
+                h("data-display", { annotations: this.annotations, authenticated: this.authenticated, orcidName: this.orcidName, throughputToken: this.throughputToken, identifier: this.identifier, additionalType: this.additionalType, link: this.link, readOnlyMode: this.readOnlyMode, orcidClientId: this.orcidClientId, handleSampleIdentifier: this.handleSampleIdentifier.bind(this) }))) : "Error: see console for details.";
     }
     static get is() { return "throughput-widget"; }
     static get encapsulation() { return "shadow"; }
@@ -266,7 +313,9 @@ export class ThroughputWidget {
         "annotations": {},
         "authenticated": {},
         "orcidName": {},
-        "throughputToken": {}
+        "throughputToken": {},
+        "iSamplesDbId": {},
+        "sampleIdentifier": {}
     }; }
     static get listeners() { return [{
             "name": "annotationAdded",

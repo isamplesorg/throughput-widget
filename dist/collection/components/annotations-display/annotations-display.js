@@ -35,6 +35,13 @@ export class AnnotationsDisplay {
             case "close_about_x": // close_about_x lives in AboutThroughput
                 this.showInfo = false;
                 break;
+            case "search_button":
+                this.handleSampleIdentifier(this.sampleIdentifier); // pass value to parents
+                break;
+            case "reset_button":
+                this.sampleIdentifier = "";
+                this.handleSampleIdentifier(this.sampleIdentifier);
+                break;
             default:
                 console.error("Unhandled click, id = ", clicked_id);
         }
@@ -50,6 +57,9 @@ export class AnnotationsDisplay {
         if (event.target.value === this.DEFAULT_ANNOTATION_TEXT) {
             event.target.value = '';
         }
+    }
+    updateSampleIdentifier(event) {
+        this.sampleIdentifier = event.target.value;
     }
     // POST new annotation to Throughput
     async submitAnnotation() {
@@ -115,6 +125,13 @@ export class AnnotationsDisplay {
                 h("div", { class: "body" },
                     !this.readOnlyMode ? (h("orcid-connect", { orcidClientId: this.orcidClientId, authenticated: this.authenticated, orcidName: this.orcidName })) : null,
                     this.authenticated && annotationElement,
+                    " ",
+                    h("br", null),
+                    h("div", { class: "annotation_search" },
+                        "Sample Identifier : ",
+                        h("input", { type: "text", onInput: (event) => this.updateSampleIdentifier(event) }),
+                        h("button", { id: "search_button", class: "search_button" }, "Search"),
+                        h("button", { id: "reset_button", class: "search_button" }, "Reset")),
                     this.annotations.map((annotation) => (h("div", { class: "annotation_item" },
                         annotation.annotation,
                         h("div", { class: "annotation_metadata" },
@@ -294,12 +311,32 @@ export class AnnotationsDisplay {
             "attribute": "annotations",
             "reflect": false,
             "defaultValue": "[]"
+        },
+        "handleSampleIdentifier": {
+            "type": "unknown",
+            "mutable": false,
+            "complexType": {
+                "original": "Function",
+                "resolved": "Function",
+                "references": {
+                    "Function": {
+                        "location": "global"
+                    }
+                }
+            },
+            "required": false,
+            "optional": false,
+            "docs": {
+                "tags": [],
+                "text": ""
+            }
         }
     }; }
     static get states() { return {
         "addAnnotation": {},
         "showInfo": {},
-        "annotationText": {}
+        "annotationText": {},
+        "sampleIdentifier": {}
     }; }
     static get events() { return [{
             "method": "annotationAdded",

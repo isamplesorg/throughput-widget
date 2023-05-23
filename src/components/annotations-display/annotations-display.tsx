@@ -69,6 +69,10 @@ export class AnnotationsDisplay {
       case "search_button":
         this.handleSampleIdentifier(this.sampleIdentifier); // pass value to parents
         break; 
+      case "reset_button":
+        this.sampleIdentifier = "";
+        this.handleSampleIdentifier(this.sampleIdentifier);
+        break;
       default:
         console.error("Unhandled click, id = ", clicked_id);
     }
@@ -198,6 +202,9 @@ export class AnnotationsDisplay {
               Sample Identifier : <input type="text" onInput={(event) =>this.updateSampleIdentifier(event)}/> 
               <button id="search_button" class="search_button">
                 Search
+              </button>
+              <button id="reset_button" class="search_button">
+                Reset
               </button>
             </div>
 
