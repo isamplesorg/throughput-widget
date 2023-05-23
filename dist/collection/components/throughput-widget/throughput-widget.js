@@ -68,6 +68,8 @@ export class ThroughputWidget {
                         this.orcidName = json.data.user.given_name + " " + json.data.user.family_name;
                         window.localStorage.setItem("ThroughputWidgetToken", this.throughputToken);
                         window.localStorage.setItem("ThroughputWidgetName", this.orcidName);
+                        // navigate back to landing page if success on saving throughput tokens
+                        window.open(window.location.origin, "_self");
                     }
                 }).catch(error => {
                     console.log(error);
