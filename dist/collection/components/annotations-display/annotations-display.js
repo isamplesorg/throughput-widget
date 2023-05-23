@@ -133,7 +133,7 @@ export class AnnotationsDisplay {
                     " ",
                     h("br", null),
                     h("div", { class: "annotation_search" },
-                        "Sample Identifier : ",
+                        "Sample Identifier ",
                         h("input", { type: "text", value: this.searchSampleIdentifier, onInput: (event) => this.updateSearchSampleIdentifier(event) }),
                         h("button", { id: "search_button", class: "search_button" }, "Search"),
                         h("button", { id: "reset_button", class: "search_button" }, "Reset")),
