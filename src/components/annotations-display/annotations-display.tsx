@@ -17,10 +17,12 @@ export class AnnotationsDisplay {
   @Prop() orcidClientId: string;
   @Prop() annotations: any = [];  
   DEFAULT_ANNOTATION_TEXT: string = "Enter your annotation here.";
-  
+  @Prop() handleSampleIdentifier: Function;
+
   @State() addAnnotation: boolean; // show add annotation text area, Submit/Cancel buttons
   @State() showInfo: boolean = false; // show AboutThroughput component
   @State() annotationText: string; // current annotation text
+  @State() sampleIdentifier: string; 
 
   @Event({
     eventName: 'annotationAdded',
@@ -64,6 +66,9 @@ export class AnnotationsDisplay {
       case "close_about_x": // close_about_x lives in AboutThroughput
         this.showInfo = false;
         break;
+      case "search_button":
+        this.handleSampleIdentifier(this.sampleIdentifier); // pass value to parents
+        break; 
       default:
         console.error("Unhandled click, id = ", clicked_id);
     }
@@ -82,6 +87,10 @@ export class AnnotationsDisplay {
     if (event.target.value === this.DEFAULT_ANNOTATION_TEXT) {
       event.target.value = '';
     }
+  }
+
+  updateSampleIdentifier(event){
+    this.sampleIdentifier = event.target.value;
   }
 
   // POST new annotation to Throughput
@@ -184,7 +193,14 @@ export class AnnotationsDisplay {
             {/* Show annotationElement if this.authenticated = true (https://reactjs.org/docs/conditional-rendering.html) */}
             {this.authenticated && annotationElement}
 
-            {/* Show annotations */}
+            {/* Show annotations */} <br/>
+            <div class="annotation_search">
+              Sample Identifier : <input type="text" onInput={(event) =>this.updateSampleIdentifier(event)}/> 
+              <button id="search_button" class="search_button">
+                Search
+              </button>
+            </div>
+
             {this.annotations.map((annotation) => (
               <div class="annotation_item">
                 {annotation.annotation}

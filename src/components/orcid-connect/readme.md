@@ -7,11 +7,12 @@
 
 ## Properties
 
-| Property        | Attribute         | Description | Type      | Default     |
-| --------------- | ----------------- | ----------- | --------- | ----------- |
-| `authenticated` | `authenticated`   |             | `boolean` | `undefined` |
-| `orcidClientId` | `orcid-client-id` |             | `string`  | `undefined` |
-| `orcidName`     | `orcid-name`      |             | `string`  | `undefined` |
+| Property             | Attribute              | Description | Type      | Default                                |
+| -------------------- | ---------------------- | ----------- | --------- | -------------------------------------- |
+| `authenticated`      | `authenticated`        |             | `boolean` | `undefined`                            |
+| `isamplesServerBase` | `isamples-server-base` |             | `string`  | `"http://localhost:8000/manage/login"` |
+| `orcidClientId`      | `orcid-client-id`      |             | `string`  | `undefined`                            |
+| `orcidName`          | `orcid-name`           |             | `string`  | `undefined`                            |
 
 
 ## Events
