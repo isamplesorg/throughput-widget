@@ -12,6 +12,7 @@ export namespace Components {
         "additionalType": string;
         "annotations": any;
         "authenticated": boolean;
+        "handleSampleIdentifier": Function;
         "identifier": string;
         "link": any;
         "orcidClientId": string;
@@ -23,6 +24,7 @@ export namespace Components {
         "additionalType": string;
         "annotations": any;
         "authenticated": boolean;
+        "handleSampleIdentifier": Function;
         "identifier": string;
         "link": any;
         "orcidClientId": string;
@@ -32,6 +34,7 @@ export namespace Components {
     }
     interface OrcidConnect {
         "authenticated": boolean;
+        "isamplesServerBase": string;
         "orcidClientId": string;
         "orcidName": string;
     }
@@ -89,6 +92,7 @@ declare namespace LocalJSX {
         "additionalType"?: string;
         "annotations"?: any;
         "authenticated"?: boolean;
+        "handleSampleIdentifier"?: Function;
         "identifier"?: string;
         "link"?: any;
         "onAnnotationAdded"?: (event: CustomEvent<void>) => void;
@@ -102,6 +106,7 @@ declare namespace LocalJSX {
         "additionalType"?: string;
         "annotations"?: any;
         "authenticated"?: boolean;
+        "handleSampleIdentifier"?: Function;
         "identifier"?: string;
         "link"?: any;
         "orcidClientId"?: string;
@@ -111,6 +116,7 @@ declare namespace LocalJSX {
     }
     interface OrcidConnect {
         "authenticated"?: boolean;
+        "isamplesServerBase"?: string;
         "onOrcidLogout"?: (event: CustomEvent<void>) => void;
         "orcidClientId"?: string;
         "orcidName"?: string;

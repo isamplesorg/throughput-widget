@@ -17,10 +17,14 @@ export class AnnotationsDisplay {
   @Prop() orcidClientId: string;
   @Prop() annotations: any = [];  
   DEFAULT_ANNOTATION_TEXT: string = "Enter your annotation here.";
-  
+  @Prop() handleSampleIdentifier: Function;
+
   @State() addAnnotation: boolean; // show add annotation text area, Submit/Cancel buttons
   @State() showInfo: boolean = false; // show AboutThroughput component
   @State() annotationText: string; // current annotation text
+  @State() searchSampleIdentifier: string; 
+  @State() postSampleIdentifier: string; 
+  @State() annotationKeyword: string; 
 
   @Event({
     eventName: 'annotationAdded',
@@ -64,6 +68,13 @@ export class AnnotationsDisplay {
       case "close_about_x": // close_about_x lives in AboutThroughput
         this.showInfo = false;
         break;
+      case "search_button":
+        this.handleSampleIdentifier(this.searchSampleIdentifier); // pass value to parents
+        break; 
+      case "reset_button":
+        this.searchSampleIdentifier = "";
+        this.handleSampleIdentifier(this.searchSampleIdentifier);
+        break;
       default:
         console.error("Unhandled click, id = ", clicked_id);
     }
@@ -84,13 +95,28 @@ export class AnnotationsDisplay {
     }
   }
 
+  updateSearchSampleIdentifier(event){
+    this.searchSampleIdentifier = event.target.value;
+  }
+
+  updatePostSampleIdentifier(event){
+    this.postSampleIdentifier = event.target.value;
+  }
+
+  updateKeyword(event){
+    this.annotationKeyword = event.target.value; 
+  }
+
   // POST new annotation to Throughput
   async submitAnnotation() {
     const annotation = {
       dbid: this.identifier,
       additionalType: this.additionalType,
-      id: this.link,
-      body: this.annotationText,
+      id: this.postSampleIdentifier,
+      body: {
+        "text": this.annotationText,
+        "keyword" : this.annotationKeyword
+      }
     };
     const url = "https://throughputdb.com/api/widget/";
     const response = await fetch(url, {
@@ -133,7 +159,9 @@ export class AnnotationsDisplay {
     let annotationElement;
     if (this.addAnnotation) {
       annotationElement =
-      <div>
+      <div class="postInput">
+        Sample Identifier <input type="text" value={this.postSampleIdentifier} onInput={(event) =>this.updatePostSampleIdentifier(event)}/> <br/>
+        Keyword <input type="text" value={this.annotationKeyword} onInput={(event) =>this.updateKeyword(event)}/> 
         <textarea
           onInput={(event) => this.updateAnnotationText(event)}
           onFocus={(event) => this.clearDefaultAnnotationText(event)}
@@ -184,7 +212,17 @@ export class AnnotationsDisplay {
             {/* Show annotationElement if this.authenticated = true (https://reactjs.org/docs/conditional-rendering.html) */}
             {this.authenticated && annotationElement}
 
-            {/* Show annotations */}
+            {/* Show annotations */} <br/>
+            <div class="annotation_search">
+              Sample Identifier <input type="text" value={this.searchSampleIdentifier} onInput={(event) =>this.updateSearchSampleIdentifier(event)}/> 
+              <button id="search_button" class="search_button">
+                Search
+              </button>
+              <button id="reset_button" class="search_button">
+                Reset
+              </button>
+            </div>
+
             {this.annotations.map((annotation) => (
               <div class="annotation_item">
                 {annotation.annotation}
