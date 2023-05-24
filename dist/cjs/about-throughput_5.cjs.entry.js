@@ -86,13 +86,19 @@ const AnnotationsDisplay = class {
     updatePostSampleIdentifier(event) {
         this.postSampleIdentifier = event.target.value;
     }
+    updateKeyword(event) {
+        this.annotationKeyword = event.target.value;
+    }
     // POST new annotation to Throughput
     async submitAnnotation() {
         const annotation = {
             dbid: this.identifier,
             additionalType: this.additionalType,
             id: this.postSampleIdentifier,
-            body: this.annotationText,
+            body: {
+                "text": this.annotationText,
+                "keyword": this.annotationKeyword
+            }
         };
         const url = "https://throughputdb.com/api/widget/";
         const response = await fetch(url, {
@@ -132,7 +138,7 @@ const AnnotationsDisplay = class {
         let annotationElement;
         if (this.addAnnotation) {
             annotationElement =
-                index.h("div", { class: "postInput" }, "Sample Identifier ", index.h("input", { type: "text", value: this.postSampleIdentifier, onInput: (event) => this.updatePostSampleIdentifier(event) }), index.h("textarea", { onInput: (event) => this.updateAnnotationText(event), onFocus: (event) => this.clearDefaultAnnotationText(event) }, this.DEFAULT_ANNOTATION_TEXT), index.h("button", { id: "submit_button", class: "add_button" }, "Submit"), index.h("button", { id: "cancel_button", class: "cancel_button" }, "Cancel"));
+                index.h("div", { class: "postInput" }, "Sample Identifier ", index.h("input", { type: "text", value: this.postSampleIdentifier, onInput: (event) => this.updatePostSampleIdentifier(event) }), " ", index.h("br", null), "Keyword ", index.h("input", { type: "text", value: this.annotationKeyword, onInput: (event) => this.updateKeyword(event) }), index.h("textarea", { onInput: (event) => this.updateAnnotationText(event), onFocus: (event) => this.clearDefaultAnnotationText(event) }, this.DEFAULT_ANNOTATION_TEXT), index.h("button", { id: "submit_button", class: "add_button" }, "Submit"), index.h("button", { id: "cancel_button", class: "cancel_button" }, "Cancel"));
         }
         else {
             annotationElement = index.h("button", { id: "add_button", class: "add_button" }, "+ Add Annotation");

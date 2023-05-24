@@ -138,6 +138,9 @@ var AnnotationsDisplay = /** @class */ (function () {
     class_1.prototype.updatePostSampleIdentifier = function (event) {
         this.postSampleIdentifier = event.target.value;
     };
+    class_1.prototype.updateKeyword = function (event) {
+        this.annotationKeyword = event.target.value;
+    };
     // POST new annotation to Throughput
     class_1.prototype.submitAnnotation = function () {
         return __awaiter(this, void 0, void 0, function () {
@@ -149,7 +152,10 @@ var AnnotationsDisplay = /** @class */ (function () {
                             dbid: this.identifier,
                             additionalType: this.additionalType,
                             id: this.postSampleIdentifier,
-                            body: this.annotationText,
+                            body: {
+                                "text": this.annotationText,
+                                "keyword": this.annotationKeyword
+                            }
                         };
                         url = "https://throughputdb.com/api/widget/";
                         return [4 /*yield*/, fetch(url, {
@@ -197,7 +203,7 @@ var AnnotationsDisplay = /** @class */ (function () {
         var annotationElement;
         if (this.addAnnotation) {
             annotationElement =
-                h("div", { class: "postInput" }, "Sample Identifier ", h("input", { type: "text", value: this.postSampleIdentifier, onInput: function (event) { return _this.updatePostSampleIdentifier(event); } }), h("textarea", { onInput: function (event) { return _this.updateAnnotationText(event); }, onFocus: function (event) { return _this.clearDefaultAnnotationText(event); } }, this.DEFAULT_ANNOTATION_TEXT), h("button", { id: "submit_button", class: "add_button" }, "Submit"), h("button", { id: "cancel_button", class: "cancel_button" }, "Cancel"));
+                h("div", { class: "postInput" }, "Sample Identifier ", h("input", { type: "text", value: this.postSampleIdentifier, onInput: function (event) { return _this.updatePostSampleIdentifier(event); } }), " ", h("br", null), "Keyword ", h("input", { type: "text", value: this.annotationKeyword, onInput: function (event) { return _this.updateKeyword(event); } }), h("textarea", { onInput: function (event) { return _this.updateAnnotationText(event); }, onFocus: function (event) { return _this.clearDefaultAnnotationText(event); } }, this.DEFAULT_ANNOTATION_TEXT), h("button", { id: "submit_button", class: "add_button" }, "Submit"), h("button", { id: "cancel_button", class: "cancel_button" }, "Cancel"));
         }
         else {
             annotationElement = h("button", { id: "add_button", class: "add_button" }, "+ Add Annotation");

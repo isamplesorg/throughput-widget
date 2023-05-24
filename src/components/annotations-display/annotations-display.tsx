@@ -24,6 +24,7 @@ export class AnnotationsDisplay {
   @State() annotationText: string; // current annotation text
   @State() searchSampleIdentifier: string; 
   @State() postSampleIdentifier: string; 
+  @State() annotationKeyword: string; 
 
   @Event({
     eventName: 'annotationAdded',
@@ -102,13 +103,20 @@ export class AnnotationsDisplay {
     this.postSampleIdentifier = event.target.value;
   }
 
+  updateKeyword(event){
+    this.annotationKeyword = event.target.value; 
+  }
+
   // POST new annotation to Throughput
   async submitAnnotation() {
     const annotation = {
       dbid: this.identifier,
       additionalType: this.additionalType,
       id: this.postSampleIdentifier,
-      body: this.annotationText,
+      body: {
+        "text": this.annotationText,
+        "keyword" : this.annotationKeyword
+      }
     };
     const url = "https://throughputdb.com/api/widget/";
     const response = await fetch(url, {
@@ -152,7 +160,8 @@ export class AnnotationsDisplay {
     if (this.addAnnotation) {
       annotationElement =
       <div class="postInput">
-        Sample Identifier <input type="text" value={this.postSampleIdentifier} onInput={(event) =>this.updatePostSampleIdentifier(event)}/> 
+        Sample Identifier <input type="text" value={this.postSampleIdentifier} onInput={(event) =>this.updatePostSampleIdentifier(event)}/> <br/>
+        Keyword <input type="text" value={this.annotationKeyword} onInput={(event) =>this.updateKeyword(event)}/> 
         <textarea
           onInput={(event) => this.updateAnnotationText(event)}
           onFocus={(event) => this.clearDefaultAnnotationText(event)}

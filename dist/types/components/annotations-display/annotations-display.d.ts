@@ -16,6 +16,7 @@ export declare class AnnotationsDisplay {
     annotationText: string;
     searchSampleIdentifier: string;
     postSampleIdentifier: string;
+    annotationKeyword: string;
     annotationAdded: EventEmitter<void>;
     checkAuth: EventEmitter<void>;
     handleClick(ev: any): Promise<void>;
@@ -24,6 +25,7 @@ export declare class AnnotationsDisplay {
     clearDefaultAnnotationText(event: any): void;
     updateSearchSampleIdentifier(event: any): void;
     updatePostSampleIdentifier(event: any): void;
+    updateKeyword(event: any): void;
     submitAnnotation(): Promise<boolean>;
     getFormattedDate(date: any): string;
     render(): any;
