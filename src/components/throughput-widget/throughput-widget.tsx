@@ -17,10 +17,12 @@ export class ThroughputWidget {
   @State() authenticated: boolean = false;
   @State() orcidName: string; // if authenticated, user's name in ORCID
   @State() throughputToken: string = null;
+  @State() iSamplesDbId: string = "r3d100011761"; // TODO : determine this value after registration to Throughput
+  @State() sampleIdentifier: string = ""; // identifier of sample that we want to find annotations associated with it 
 
   @Listen('annotationAdded')
   annotationAddedHandler(_: CustomEvent<void>) {
-    this.getAnnotations();
+    this.getISamplesAnnotations();
   }
 
   @Listen('orcidLogout')
@@ -46,8 +48,12 @@ export class ThroughputWidget {
     } else {
       console.log("non-ORCID auth hash found, ignoring");
     }
-
-    this.getAnnotations();
+    if (this.sampleIdentifier !== ""){
+      // fetch annotations associated with identifier if initialized
+      this.getSampleAnnotations();
+    } else {
+      this.getISamplesAnnotations();
+    }
   }
 
   // Check Throughput authentication state.
@@ -128,6 +134,38 @@ export class ThroughputWidget {
     });
   }
 
+  // Pull annotations associated with iSamples
+  getISamplesAnnotations() {
+    const ANNOTATION_SEARCH_ENDPOINT = "https://throughputdb.com/api/ccdrs/annotations?";
+    const params = new URLSearchParams({
+      dbid: this.iSamplesDbId
+    })
+    fetch(ANNOTATION_SEARCH_ENDPOINT + params).then((response) => {
+      response.json().then((json) => {
+        console.log(json);
+        this.annotations = json.data;
+      });
+    });
+  }
+
+  // Pull iSamples annotations associated with given identifier id 
+  getSampleAnnotations () {
+    const ANNOTATION_SEARCH_ENDPOINT = "https://throughputdb.com/api/ccdrs/annotations?";
+    const params = new URLSearchParams({
+        dbid: this.iSamplesDbId,
+        additionalType: this.additionalType,
+        id: this.sampleIdentifier,
+        limit: "9999"
+    });
+    fetch(ANNOTATION_SEARCH_ENDPOINT + params).then((response) => {
+      response.json().then((json) => {
+        console.log(json);
+        this.annotations = json.data;
+      });
+    });
+  }
+
+
   // Clear authentication data in localStorage, reset auth state variables.
   logout() {
     window.localStorage.removeItem("ThroughputWidgetToken");
@@ -180,6 +218,17 @@ export class ThroughputWidget {
     });
   }
 
+  handleSampleIdentifier(sampleIdentifier) {
+    // update state value from the passed value of children
+    this.sampleIdentifier = sampleIdentifier; // update the sample identifier value from received
+    if (this.sampleIdentifier !== ""){
+      this.getSampleAnnotations();
+    } else {
+      this.getISamplesAnnotations();
+    }
+  }
+
+
   render() {
     return this.hasRequiredProps() ? 
       (<div>
@@ -193,6 +242,7 @@ export class ThroughputWidget {
           link={this.link}
           readOnlyMode={this.readOnlyMode}
           orcidClientId={this.orcidClientId}
+          handleSampleIdentifier={this.handleSampleIdentifier.bind(this)}
       ></data-display></div>) : "Error: see console for details.";
   }
 }

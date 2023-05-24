@@ -70,6 +70,12 @@
   padding-top: 5px;
 }
 
+.annotation_search{
+  font-size: 18px; 
+  float: right;
+  color: black;
+}
+
 .body {
   /* flex: 1 1 auto; */
   padding: 20px;
@@ -91,7 +97,37 @@
   font-size: 20px;
   border-radius: 4px;
   text-align: center;
-  padding-bottom: 25px;
+  padding-bottom: 5px;
+}
+
+.keyword {
+  background-color: lightgray;
+  color: white;
+  font-size: 15px;
+  margin: 3px;
+  padding: 4px;
+}
+
+.search_button {
+  background-color:lightgrey; /* Green */
+  margin: auto;
+  font-size: 15px;
+  color:black;
+  width: auto;
+  margin: 3px;
+}
+
+.search_button:hover{
+  background-color:grey; /* Green */
+}
+
+.add_keyword_button {
+  background-color: #4caf50; /* Green */
+  margin: auto;
+  font-size: 15px;
+  color:white;
+  width: auto;
+  margin: 3px;
 }
 
 button {
@@ -109,6 +145,7 @@ button {
   margin: 5px;
 }
 
+
 .add_button {
   background-color: #4caf50; /* Green */
   margin: auto;
@@ -124,6 +161,12 @@ button {
   background-color: darkred;
 }
 
+.postInput {
+  font-size: 18px;
+  margin: 5px;
+  padding: 2px;
+}
+
 textarea {
   resize: none;
   width: 100%;
@@ -131,6 +174,10 @@ textarea {
   font-size: 20px;
   font-family: inherit;
   /* padding: 10px 20px; */
+}
+
+input {
+  margin: 3px;
 }
 
 .closeContainer {

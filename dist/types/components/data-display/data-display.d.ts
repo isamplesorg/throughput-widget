@@ -8,6 +8,7 @@ export declare class DataDisplay {
     link: any;
     readOnlyMode: boolean;
     orcidClientId: string;
+    handleSampleIdentifier: Function;
     open: boolean;
     handleClick(ev: any): void;
     getCountText(): any;
