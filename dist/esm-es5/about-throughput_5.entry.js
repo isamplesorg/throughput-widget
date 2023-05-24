@@ -201,6 +201,20 @@ var AnnotationsDisplay = /** @class */ (function () {
             "/" +
             properDate.getFullYear());
     };
+    class_1.prototype.parseAnnotation = function (annotation) {
+        try {
+            var annotObj = JSON.parse(annotation);
+            if (typeof annotObj === 'object') {
+                var keywords = annotObj.keyword;
+                var text = annotObj.text;
+                return h("div", null, text, " ", keywords.map(function (keyword) { return h("span", { class: "keyword" }, keyword); }));
+            }
+        }
+        catch (error) {
+            // not a JSON content, just return string 
+            return h("div", null, annotation);
+        }
+    };
     class_1.prototype.render = function () {
         var _this = this;
         // Show "Add Annotation" button or add annotation UI (text area, Submit/Cancel buttons)
@@ -215,7 +229,7 @@ var AnnotationsDisplay = /** @class */ (function () {
             annotationElement = h("button", { id: "add_button", class: "add_button" }, "+ Add Annotation");
         }
         return (h("div", { class: "overlay" }, this.showInfo ? h("about-throughput", null) :
-            (h("div", { class: "annotation_list" }, h("div", { class: "closeContainer" }, h("a", { id: "close_x", class: "close" })), h("div", { class: "header" }, "Throughput Annotations ", h("a", { id: "info_i" }, "\u24D8"), h("br", null), h("div", { class: "annotation_search" }, "Identifier ", h("input", { type: "text", value: this.searchSampleIdentifier, onInput: function (event) { return _this.updateSearchSampleIdentifier(event); } }), h("button", { id: "search_button", class: "search_button" }, "Search"), h("button", { id: "reset_button", class: "search_button" }, "Reset"))), h("div", { class: "body" }, !this.readOnlyMode ? (h("orcid-connect", { orcidClientId: this.orcidClientId, authenticated: this.authenticated, orcidName: this.orcidName })) : null, this.authenticated && annotationElement, " ", h("br", null), this.annotations.map(function (annotation) { return (h("div", { class: "annotation_item" }, annotation.annotation, h("div", { class: "annotation_metadata" }, h("div", { class: "annotation_author" }, annotation.annotationauthor ? annotation.annotationauthor : "[null author]"), h("div", { class: "orcidLink" }, h("a", { href: "https://orcid.org/" + annotation.orcid, target: "_blank" }, h("img", { id: "orcid-id-icon", src: "https://orcid.org/sites/default/files/images/orcid_24x24.png", width: "14", height: "14", alt: "ORCID iD icon" }))), h("div", { class: "annotation_author" }, "(", _this.getFormattedDate(annotation.date), ")", " ")))); }))))));
+            (h("div", { class: "annotation_list" }, h("div", { class: "closeContainer" }, h("a", { id: "close_x", class: "close" })), h("div", { class: "header" }, "Throughput Annotations ", h("a", { id: "info_i" }, "\u24D8"), h("br", null), h("div", { class: "annotation_search" }, "Identifier ", h("input", { type: "text", value: this.searchSampleIdentifier, onInput: function (event) { return _this.updateSearchSampleIdentifier(event); } }), h("button", { id: "search_button", class: "search_button" }, "Search"), h("button", { id: "reset_button", class: "search_button" }, "Reset"))), h("div", { class: "body" }, !this.readOnlyMode ? (h("orcid-connect", { orcidClientId: this.orcidClientId, authenticated: this.authenticated, orcidName: this.orcidName })) : null, this.authenticated && annotationElement, " ", h("br", null), this.annotations.map(function (annotation) { return (h("div", { class: "annotation_item" }, _this.parseAnnotation(annotation.annotation), h("div", { class: "annotation_metadata" }, h("div", { class: "annotation_author" }, annotation.annotationauthor ? annotation.annotationauthor : "[null author]"), h("div", { class: "orcidLink" }, h("a", { href: "https://orcid.org/" + annotation.orcid, target: "_blank" }, h("img", { id: "orcid-id-icon", src: "https://orcid.org/sites/default/files/images/orcid_24x24.png", width: "14", height: "14", alt: "ORCID iD icon" }))), h("div", { class: "annotation_author" }, "(", _this.getFormattedDate(annotation.date), ")", " ")))); }))))));
     };
     Object.defineProperty(class_1, "assetsDirs", {
         get: function () { return ["assets"]; },

@@ -135,6 +135,20 @@ const AnnotationsDisplay = class {
             "/" +
             properDate.getFullYear());
     }
+    parseAnnotation(annotation) {
+        try {
+            let annotObj = JSON.parse(annotation);
+            if (typeof annotObj === 'object') {
+                let keywords = annotObj.keyword;
+                let text = annotObj.text;
+                return index.h("div", null, text, " ", keywords.map((keyword) => index.h("span", { class: "keyword" }, keyword)));
+            }
+        }
+        catch (error) {
+            // not a JSON content, just return string 
+            return index.h("div", null, annotation);
+        }
+    }
     render() {
         // Show "Add Annotation" button or add annotation UI (text area, Submit/Cancel buttons)
         // depending on state of this.addAnnotation. Doing this here to avoid hard-to-read
@@ -148,7 +162,7 @@ const AnnotationsDisplay = class {
             annotationElement = index.h("button", { id: "add_button", class: "add_button" }, "+ Add Annotation");
         }
         return (index.h("div", { class: "overlay" }, this.showInfo ? index.h("about-throughput", null) :
-            (index.h("div", { class: "annotation_list" }, index.h("div", { class: "closeContainer" }, index.h("a", { id: "close_x", class: "close" })), index.h("div", { class: "header" }, "Throughput Annotations ", index.h("a", { id: "info_i" }, "\u24D8"), index.h("br", null), index.h("div", { class: "annotation_search" }, "Identifier ", index.h("input", { type: "text", value: this.searchSampleIdentifier, onInput: (event) => this.updateSearchSampleIdentifier(event) }), index.h("button", { id: "search_button", class: "search_button" }, "Search"), index.h("button", { id: "reset_button", class: "search_button" }, "Reset"))), index.h("div", { class: "body" }, !this.readOnlyMode ? (index.h("orcid-connect", { orcidClientId: this.orcidClientId, authenticated: this.authenticated, orcidName: this.orcidName })) : null, this.authenticated && annotationElement, " ", index.h("br", null), this.annotations.map((annotation) => (index.h("div", { class: "annotation_item" }, annotation.annotation, index.h("div", { class: "annotation_metadata" }, index.h("div", { class: "annotation_author" }, annotation.annotationauthor ? annotation.annotationauthor : "[null author]"), index.h("div", { class: "orcidLink" }, index.h("a", { href: "https://orcid.org/" + annotation.orcid, target: "_blank" }, index.h("img", { id: "orcid-id-icon", src: "https://orcid.org/sites/default/files/images/orcid_24x24.png", width: "14", height: "14", alt: "ORCID iD icon" }))), index.h("div", { class: "annotation_author" }, "(", this.getFormattedDate(annotation.date), ")", " "))))))))));
+            (index.h("div", { class: "annotation_list" }, index.h("div", { class: "closeContainer" }, index.h("a", { id: "close_x", class: "close" })), index.h("div", { class: "header" }, "Throughput Annotations ", index.h("a", { id: "info_i" }, "\u24D8"), index.h("br", null), index.h("div", { class: "annotation_search" }, "Identifier ", index.h("input", { type: "text", value: this.searchSampleIdentifier, onInput: (event) => this.updateSearchSampleIdentifier(event) }), index.h("button", { id: "search_button", class: "search_button" }, "Search"), index.h("button", { id: "reset_button", class: "search_button" }, "Reset"))), index.h("div", { class: "body" }, !this.readOnlyMode ? (index.h("orcid-connect", { orcidClientId: this.orcidClientId, authenticated: this.authenticated, orcidName: this.orcidName })) : null, this.authenticated && annotationElement, " ", index.h("br", null), this.annotations.map((annotation) => (index.h("div", { class: "annotation_item" }, this.parseAnnotation(annotation.annotation), index.h("div", { class: "annotation_metadata" }, index.h("div", { class: "annotation_author" }, annotation.annotationauthor ? annotation.annotationauthor : "[null author]"), index.h("div", { class: "orcidLink" }, index.h("a", { href: "https://orcid.org/" + annotation.orcid, target: "_blank" }, index.h("img", { id: "orcid-id-icon", src: "https://orcid.org/sites/default/files/images/orcid_24x24.png", width: "14", height: "14", alt: "ORCID iD icon" }))), index.h("div", { class: "annotation_author" }, "(", this.getFormattedDate(annotation.date), ")", " "))))))))));
     }
     static get assetsDirs() { return ["assets"]; }
 };

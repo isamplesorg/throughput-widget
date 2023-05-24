@@ -156,6 +156,20 @@ export class AnnotationsDisplay {
     );
   }
 
+  parseAnnotation(annotation){
+    try {
+        let annotObj = JSON.parse(annotation);
+        if (typeof annotObj === 'object'){
+          let keywords = annotObj.keyword; 
+          let text = annotObj.text;
+          return <div>{text} {keywords.map((keyword) => <span class="keyword">{keyword}</span>) }</div>
+        } 
+    } catch(error) {
+      // not a JSON content, just return string 
+      return <div>{annotation}</div>
+    }
+  }
+
   render() {
     // Show "Add Annotation" button or add annotation UI (text area, Submit/Cancel buttons)
     // depending on state of this.addAnnotation. Doing this here to avoid hard-to-read
@@ -233,7 +247,7 @@ export class AnnotationsDisplay {
 
             {this.annotations.map((annotation) => (
               <div class="annotation_item">
-                {annotation.annotation}
+               {this.parseAnnotation(annotation.annotation)}
                 <div class="annotation_metadata">
                   <div class="annotation_author">{annotation.annotationauthor ? annotation.annotationauthor : "[null author]"}</div>
                   <div class="orcidLink">

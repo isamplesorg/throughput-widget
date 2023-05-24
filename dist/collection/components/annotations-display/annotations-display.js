@@ -113,6 +113,23 @@ export class AnnotationsDisplay {
             "/" +
             properDate.getFullYear());
     }
+    parseAnnotation(annotation) {
+        try {
+            let annotObj = JSON.parse(annotation);
+            if (typeof annotObj === 'object') {
+                let keywords = annotObj.keyword;
+                let text = annotObj.text;
+                return h("div", null,
+                    text,
+                    " ",
+                    keywords.map((keyword) => h("span", { class: "keyword" }, keyword)));
+            }
+        }
+        catch (error) {
+            // not a JSON content, just return string 
+            return h("div", null, annotation);
+        }
+    }
     render() {
         // Show "Add Annotation" button or add annotation UI (text area, Submit/Cancel buttons)
         // depending on state of this.addAnnotation. Doing this here to avoid hard-to-read
@@ -155,7 +172,7 @@ export class AnnotationsDisplay {
                     " ",
                     h("br", null),
                     this.annotations.map((annotation) => (h("div", { class: "annotation_item" },
-                        annotation.annotation,
+                        this.parseAnnotation(annotation.annotation),
                         h("div", { class: "annotation_metadata" },
                             h("div", { class: "annotation_author" }, annotation.annotationauthor ? annotation.annotationauthor : "[null author]"),
                             h("div", { class: "orcidLink" },

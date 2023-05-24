@@ -29,5 +29,6 @@ export declare class AnnotationsDisplay {
     updateKeyword(event: any): void;
     submitAnnotation(): Promise<boolean>;
     getFormattedDate(date: any): string;
+    parseAnnotation(annotation: any): any;
     render(): any;
 }
