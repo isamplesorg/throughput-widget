@@ -25,6 +25,7 @@ export class AnnotationsDisplay {
   @State() searchSampleIdentifier: string; 
   @State() postSampleIdentifier: string; 
   @State() annotationKeyword: string; 
+  @State() annotationKeywords: Array<string> = []; // array of string keywords
 
   @Event({
     eventName: 'annotationAdded',
@@ -75,6 +76,9 @@ export class AnnotationsDisplay {
         this.searchSampleIdentifier = "";
         this.handleSampleIdentifier(this.searchSampleIdentifier);
         break;
+      case "add_keyword_button":
+        this.annotationKeywords.push(this.annotationKeyword); 
+        this.annotationKeyword = ""; // clear 
       default:
         console.error("Unhandled click, id = ", clicked_id);
     }
@@ -113,10 +117,10 @@ export class AnnotationsDisplay {
       dbid: this.identifier,
       additionalType: this.additionalType,
       id: this.postSampleIdentifier,
-      body: {
+      body: JSON.stringify({
         "text": this.annotationText,
-        "keyword" : this.annotationKeyword
-      }
+        "keyword" : this.annotationKeywords
+      })
     };
     const url = "https://throughputdb.com/api/widget/";
     const response = await fetch(url, {
@@ -152,6 +156,20 @@ export class AnnotationsDisplay {
     );
   }
 
+  parseAnnotation(annotation){
+    try {
+        let annotObj = JSON.parse(annotation);
+        if (typeof annotObj === 'object'){
+          let keywords = annotObj.keyword; 
+          let text = annotObj.text;
+          return <div>{text} {keywords.map((keyword) => <span class="keyword">{keyword}</span>) }</div>
+        } 
+    } catch(error) {
+      // not a JSON content, just return string 
+      return <div>{annotation}</div>
+    }
+  }
+
   render() {
     // Show "Add Annotation" button or add annotation UI (text area, Submit/Cancel buttons)
     // depending on state of this.addAnnotation. Doing this here to avoid hard-to-read
@@ -160,8 +178,11 @@ export class AnnotationsDisplay {
     if (this.addAnnotation) {
       annotationElement =
       <div class="postInput">
-        Sample Identifier <input type="text" value={this.postSampleIdentifier} onInput={(event) =>this.updatePostSampleIdentifier(event)}/> <br/>
-        Keyword <input type="text" value={this.annotationKeyword} onInput={(event) =>this.updateKeyword(event)}/> 
+        Identifier <input type="text" value={this.postSampleIdentifier} onInput={(event) =>this.updatePostSampleIdentifier(event)}/> <br/>
+        Keyword 
+          <input type="text" value={this.annotationKeyword} onInput={(event) =>this.updateKeyword(event)}/> 
+          <button id="add_keyword_button" class="add_keyword_button">Add</button>
+          {this.annotationKeywords.map((keyword) => <span class="keyword">{keyword}</span>)}
         <textarea
           onInput={(event) => this.updateAnnotationText(event)}
           onFocus={(event) => this.clearDefaultAnnotationText(event)}
@@ -198,9 +219,19 @@ export class AnnotationsDisplay {
               height="100"
               width="222"
             /> */}
-            Throughput Annotations <a id="info_i">&#9432;</a>
+            Throughput Annotations <a id="info_i">&#9432;</a><br/>
+            <div class="annotation_search">
+              Identifier <input type="text" value={this.searchSampleIdentifier} onInput={(event) =>this.updateSearchSampleIdentifier(event)}/> 
+              <button id="search_button" class="search_button">
+                Search
+              </button>
+              <button id="reset_button" class="search_button">
+                Reset
+              </button>
+            </div>
           </div>
           <div class="body">
+
             {!this.readOnlyMode ? (
                 <orcid-connect
                   orcidClientId={this.orcidClientId}
@@ -213,19 +244,10 @@ export class AnnotationsDisplay {
             {this.authenticated && annotationElement}
 
             {/* Show annotations */} <br/>
-            <div class="annotation_search">
-              Sample Identifier <input type="text" value={this.searchSampleIdentifier} onInput={(event) =>this.updateSearchSampleIdentifier(event)}/> 
-              <button id="search_button" class="search_button">
-                Search
-              </button>
-              <button id="reset_button" class="search_button">
-                Reset
-              </button>
-            </div>
 
             {this.annotations.map((annotation) => (
               <div class="annotation_item">
-                {annotation.annotation}
+               {this.parseAnnotation(annotation.annotation)}
                 <div class="annotation_metadata">
                   <div class="annotation_author">{annotation.annotationauthor ? annotation.annotationauthor : "[null author]"}</div>
                   <div class="orcidLink">

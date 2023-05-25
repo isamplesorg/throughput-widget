@@ -46,7 +46,7 @@ var AboutThroughput = /** @class */ (function () {
     return AboutThroughput;
 }());
 AboutThroughput.style = aboutThroughputCss;
-var annotationsDisplayCss = ".overlay{cursor:default;position:fixed;z-index:100000;height:100%;width:100%;top:0px;left:0px;background-color:rgba(0, 0, 0, 0.5)}.annotation_list{display:-ms-flexbox;display:flex;-ms-flex-flow:column;flex-flow:column;z-index:100001;margin:10vh auto;width:50vw;max-height:80vh;min-width:300px;background-color:var(--modal-background-color, white);border-radius:4px}.annotation_item{color:var(--modal-font-color, black);font-weight:normal;background-color:var(--modal-card-color, white);padding:10px;-webkit-box-shadow:0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);box-shadow:0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);margin-bottom:10px;border-radius:4px;cursor:default;}.annotation_author{display:-ms-flexbox;display:flex;-ms-flex-direction:column;flex-direction:column;-ms-flex-pack:distribute;justify-content:space-around}.orcidLink{cursor:pointer;padding-right:10px;padding-left:3px;display:-ms-flexbox;display:flex;-ms-flex-direction:column;flex-direction:column;-ms-flex-pack:center;justify-content:center}.orcidLink a{display:-ms-flexbox;display:flex;-ms-flex-direction:column;flex-direction:column;-ms-flex-pack:center;justify-content:center}.annotation_metadata{font-size:smaller;display:-ms-flexbox;display:flex;-ms-flex-direction:row;flex-direction:row;-ms-flex-pack:start;justify-content:flex-start;padding-top:5px}.annotation_search{font-size:18px;padding:3px}.body{padding:20px;padding-top:0px;overflow-y:scroll;background-color:var(--modal-background-color, white);border-radius:4px;display:-ms-flexbox;display:flex;-ms-flex-direction:column;flex-direction:column}.header{color:#3b99e0;background-color:var(--modal-background-color, white);-webkit-box-shadow:0 0 0px rgba(0, 0, 0, 0.12), 0 2px 2px rgba(0, 0, 0, 0.24);box-shadow:0 0 0px rgba(0, 0, 0, 0.12), 0 2px 2px rgba(0, 0, 0, 0.24);z-index:10000000;font-size:20px;border-radius:4px;text-align:center;padding-bottom:25px}button{border:none;color:white;padding:5px;text-align:center;text-decoration:none;display:inline-block;font-size:18px;font-family:inherit;width:150px;border-radius:6px;cursor:pointer;margin:5px}.search_button{background-color:#4caf50;font-size:15px;width:auto;margin:3px}.add_button{background-color:#4caf50;margin:auto}.add_button:hover{background-color:#3e8e41}.cancel_button{background-color:red}.cancel_button:hover{background-color:darkred}.postInput{font-size:18px;margin:5px;padding:2px}textarea{resize:none;width:100%;height:200px;font-size:20px;font-family:inherit;}input{margin:3px}.closeContainer{display:-ms-flexbox;display:flex;-ms-flex-direction:row-reverse;flex-direction:row-reverse}.close{width:32px;height:32px;opacity:0.3}.close:hover{opacity:1}.close:before,.close:after{position:absolute;top:10vh;margin-left:12px;content:\" \";height:33px;width:2px;background-color:#333}.close:before{-webkit-transform:rotate(45deg);transform:rotate(45deg)}.close:after{-webkit-transform:rotate(-45deg);transform:rotate(-45deg)}";
+var annotationsDisplayCss = ".overlay{cursor:default;position:fixed;z-index:100000;height:100%;width:100%;top:0px;left:0px;background-color:rgba(0, 0, 0, 0.5)}.annotation_list{display:-ms-flexbox;display:flex;-ms-flex-flow:column;flex-flow:column;z-index:100001;margin:10vh auto;width:50vw;max-height:80vh;min-width:300px;background-color:var(--modal-background-color, white);border-radius:4px}.annotation_item{color:var(--modal-font-color, black);font-weight:normal;background-color:var(--modal-card-color, white);padding:10px;-webkit-box-shadow:0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);box-shadow:0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);margin-bottom:10px;border-radius:4px;cursor:default;}.annotation_author{display:-ms-flexbox;display:flex;-ms-flex-direction:column;flex-direction:column;-ms-flex-pack:distribute;justify-content:space-around}.orcidLink{cursor:pointer;padding-right:10px;padding-left:3px;display:-ms-flexbox;display:flex;-ms-flex-direction:column;flex-direction:column;-ms-flex-pack:center;justify-content:center}.orcidLink a{display:-ms-flexbox;display:flex;-ms-flex-direction:column;flex-direction:column;-ms-flex-pack:center;justify-content:center}.annotation_metadata{font-size:smaller;display:-ms-flexbox;display:flex;-ms-flex-direction:row;flex-direction:row;-ms-flex-pack:start;justify-content:flex-start;padding-top:5px}.annotation_search{font-size:18px;float:right;color:black}.body{padding:20px;padding-top:0px;overflow-y:scroll;background-color:var(--modal-background-color, white);border-radius:4px;display:-ms-flexbox;display:flex;-ms-flex-direction:column;flex-direction:column}.header{color:#3b99e0;background-color:var(--modal-background-color, white);-webkit-box-shadow:0 0 0px rgba(0, 0, 0, 0.12), 0 2px 2px rgba(0, 0, 0, 0.24);box-shadow:0 0 0px rgba(0, 0, 0, 0.12), 0 2px 2px rgba(0, 0, 0, 0.24);z-index:10000000;font-size:20px;border-radius:4px;text-align:center;padding-bottom:5px}.keyword{background-color:lightgray;color:white;font-size:15px;margin:3px;padding:4px}.search_button{background-color:lightgrey;margin:auto;font-size:15px;color:black;width:auto;margin:3px}.search_button:hover{background-color:grey;}.add_keyword_button{background-color:#4caf50;margin:auto;font-size:15px;color:white;width:auto;margin:3px}button{border:none;color:white;padding:5px;text-align:center;text-decoration:none;display:inline-block;font-size:18px;font-family:inherit;width:150px;border-radius:6px;cursor:pointer;margin:5px}.add_button{background-color:#4caf50;margin:auto}.add_button:hover{background-color:#3e8e41}.cancel_button{background-color:red}.cancel_button:hover{background-color:darkred}.postInput{font-size:18px;margin:5px;padding:2px}textarea{resize:none;width:100%;height:200px;font-size:20px;font-family:inherit;}input{margin:3px}.closeContainer{display:-ms-flexbox;display:flex;-ms-flex-direction:row-reverse;flex-direction:row-reverse}.close{width:32px;height:32px;opacity:0.3}.close:hover{opacity:1}.close:before,.close:after{position:absolute;top:10vh;margin-left:12px;content:\" \";height:33px;width:2px;background-color:#333}.close:before{-webkit-transform:rotate(45deg);transform:rotate(45deg)}.close:after{-webkit-transform:rotate(-45deg);transform:rotate(-45deg)}";
 var AnnotationsDisplay = /** @class */ (function () {
     function class_1(hostRef) {
         registerInstance(this, hostRef);
@@ -58,6 +58,7 @@ var AnnotationsDisplay = /** @class */ (function () {
         this.annotations = [];
         this.DEFAULT_ANNOTATION_TEXT = "Enter your annotation here.";
         this.showInfo = false; // show AboutThroughput component
+        this.annotationKeywords = []; // array of string keywords
     }
     class_1.prototype.handleClick = function (ev) {
         return __awaiter(this, void 0, void 0, function () {
@@ -77,45 +78,50 @@ var AnnotationsDisplay = /** @class */ (function () {
                             case "close_about_x": return [3 /*break*/, 8];
                             case "search_button": return [3 /*break*/, 9];
                             case "reset_button": return [3 /*break*/, 10];
+                            case "add_keyword_button": return [3 /*break*/, 11];
                         }
-                        return [3 /*break*/, 11];
+                        return [3 /*break*/, 12];
                     case 1:
                         this.showInfo = true;
-                        return [3 /*break*/, 12];
+                        return [3 /*break*/, 13];
                     case 2:
                         this.addAnnotation = true;
-                        return [3 /*break*/, 12];
+                        return [3 /*break*/, 13];
                     case 3:
                         console.log("Submit clicked");
                         return [4 /*yield*/, this.submitAnnotation()];
                     case 4:
                         success = _b.sent();
                         this.addAnnotation = !success; // close add annotation UI if submit succeeds
-                        return [3 /*break*/, 12];
+                        return [3 /*break*/, 13];
                     case 5:
                         this.addAnnotation = false;
-                        return [3 /*break*/, 12];
+                        return [3 /*break*/, 13];
                     case 6:
                         alert("Here's a blurb about the Throughput Database! Learn more at throughputdb.com");
-                        return [3 /*break*/, 12];
+                        return [3 /*break*/, 13];
                     case 7: 
                     // Ignore close_x here, it's handled in DataDisplay.handleClick(), which
                     // is called after this.handleClick(). Otherwise we hit default below.
-                    return [3 /*break*/, 12];
+                    return [3 /*break*/, 13];
                     case 8:
                         this.showInfo = false;
-                        return [3 /*break*/, 12];
+                        return [3 /*break*/, 13];
                     case 9:
                         this.handleSampleIdentifier(this.searchSampleIdentifier); // pass value to parents
-                        return [3 /*break*/, 12];
+                        return [3 /*break*/, 13];
                     case 10:
                         this.searchSampleIdentifier = "";
                         this.handleSampleIdentifier(this.searchSampleIdentifier);
-                        return [3 /*break*/, 12];
+                        return [3 /*break*/, 13];
                     case 11:
-                        console.error("Unhandled click, id = ", clicked_id);
+                        this.annotationKeywords.push(this.annotationKeyword);
+                        this.annotationKeyword = ""; // clear 
                         _b.label = 12;
-                    case 12: return [2 /*return*/];
+                    case 12:
+                        console.error("Unhandled click, id = ", clicked_id);
+                        _b.label = 13;
+                    case 13: return [2 /*return*/];
                 }
             });
         });
@@ -152,10 +158,10 @@ var AnnotationsDisplay = /** @class */ (function () {
                             dbid: this.identifier,
                             additionalType: this.additionalType,
                             id: this.postSampleIdentifier,
-                            body: {
+                            body: JSON.stringify({
                                 "text": this.annotationText,
-                                "keyword": this.annotationKeyword
-                            }
+                                "keyword": this.annotationKeywords
+                            })
                         };
                         url = "https://throughputdb.com/api/widget/";
                         return [4 /*yield*/, fetch(url, {
@@ -195,6 +201,20 @@ var AnnotationsDisplay = /** @class */ (function () {
             "/" +
             properDate.getFullYear());
     };
+    class_1.prototype.parseAnnotation = function (annotation) {
+        try {
+            var annotObj = JSON.parse(annotation);
+            if (typeof annotObj === 'object') {
+                var keywords = annotObj.keyword;
+                var text = annotObj.text;
+                return h("div", null, text, " ", keywords.map(function (keyword) { return h("span", { class: "keyword" }, keyword); }));
+            }
+        }
+        catch (error) {
+            // not a JSON content, just return string 
+            return h("div", null, annotation);
+        }
+    };
     class_1.prototype.render = function () {
         var _this = this;
         // Show "Add Annotation" button or add annotation UI (text area, Submit/Cancel buttons)
@@ -203,13 +223,13 @@ var AnnotationsDisplay = /** @class */ (function () {
         var annotationElement;
         if (this.addAnnotation) {
             annotationElement =
-                h("div", { class: "postInput" }, "Sample Identifier ", h("input", { type: "text", value: this.postSampleIdentifier, onInput: function (event) { return _this.updatePostSampleIdentifier(event); } }), " ", h("br", null), "Keyword ", h("input", { type: "text", value: this.annotationKeyword, onInput: function (event) { return _this.updateKeyword(event); } }), h("textarea", { onInput: function (event) { return _this.updateAnnotationText(event); }, onFocus: function (event) { return _this.clearDefaultAnnotationText(event); } }, this.DEFAULT_ANNOTATION_TEXT), h("button", { id: "submit_button", class: "add_button" }, "Submit"), h("button", { id: "cancel_button", class: "cancel_button" }, "Cancel"));
+                h("div", { class: "postInput" }, "Identifier ", h("input", { type: "text", value: this.postSampleIdentifier, onInput: function (event) { return _this.updatePostSampleIdentifier(event); } }), " ", h("br", null), "Keyword", h("input", { type: "text", value: this.annotationKeyword, onInput: function (event) { return _this.updateKeyword(event); } }), h("button", { id: "add_keyword_button", class: "add_keyword_button" }, "Add"), this.annotationKeywords.map(function (keyword) { return h("span", { class: "keyword" }, keyword); }), h("textarea", { onInput: function (event) { return _this.updateAnnotationText(event); }, onFocus: function (event) { return _this.clearDefaultAnnotationText(event); } }, this.DEFAULT_ANNOTATION_TEXT), h("button", { id: "submit_button", class: "add_button" }, "Submit"), h("button", { id: "cancel_button", class: "cancel_button" }, "Cancel"));
         }
         else {
             annotationElement = h("button", { id: "add_button", class: "add_button" }, "+ Add Annotation");
         }
         return (h("div", { class: "overlay" }, this.showInfo ? h("about-throughput", null) :
-            (h("div", { class: "annotation_list" }, h("div", { class: "closeContainer" }, h("a", { id: "close_x", class: "close" })), h("div", { class: "header" }, "Throughput Annotations ", h("a", { id: "info_i" }, "\u24D8")), h("div", { class: "body" }, !this.readOnlyMode ? (h("orcid-connect", { orcidClientId: this.orcidClientId, authenticated: this.authenticated, orcidName: this.orcidName })) : null, this.authenticated && annotationElement, " ", h("br", null), h("div", { class: "annotation_search" }, "Sample Identifier ", h("input", { type: "text", value: this.searchSampleIdentifier, onInput: function (event) { return _this.updateSearchSampleIdentifier(event); } }), h("button", { id: "search_button", class: "search_button" }, "Search"), h("button", { id: "reset_button", class: "search_button" }, "Reset")), this.annotations.map(function (annotation) { return (h("div", { class: "annotation_item" }, annotation.annotation, h("div", { class: "annotation_metadata" }, h("div", { class: "annotation_author" }, annotation.annotationauthor ? annotation.annotationauthor : "[null author]"), h("div", { class: "orcidLink" }, h("a", { href: "https://orcid.org/" + annotation.orcid, target: "_blank" }, h("img", { id: "orcid-id-icon", src: "https://orcid.org/sites/default/files/images/orcid_24x24.png", width: "14", height: "14", alt: "ORCID iD icon" }))), h("div", { class: "annotation_author" }, "(", _this.getFormattedDate(annotation.date), ")", " ")))); }))))));
+            (h("div", { class: "annotation_list" }, h("div", { class: "closeContainer" }, h("a", { id: "close_x", class: "close" })), h("div", { class: "header" }, "Throughput Annotations ", h("a", { id: "info_i" }, "\u24D8"), h("br", null), h("div", { class: "annotation_search" }, "Identifier ", h("input", { type: "text", value: this.searchSampleIdentifier, onInput: function (event) { return _this.updateSearchSampleIdentifier(event); } }), h("button", { id: "search_button", class: "search_button" }, "Search"), h("button", { id: "reset_button", class: "search_button" }, "Reset"))), h("div", { class: "body" }, !this.readOnlyMode ? (h("orcid-connect", { orcidClientId: this.orcidClientId, authenticated: this.authenticated, orcidName: this.orcidName })) : null, this.authenticated && annotationElement, " ", h("br", null), this.annotations.map(function (annotation) { return (h("div", { class: "annotation_item" }, _this.parseAnnotation(annotation.annotation), h("div", { class: "annotation_metadata" }, h("div", { class: "annotation_author" }, annotation.annotationauthor ? annotation.annotationauthor : "[null author]"), h("div", { class: "orcidLink" }, h("a", { href: "https://orcid.org/" + annotation.orcid, target: "_blank" }, h("img", { id: "orcid-id-icon", src: "https://orcid.org/sites/default/files/images/orcid_24x24.png", width: "14", height: "14", alt: "ORCID iD icon" }))), h("div", { class: "annotation_author" }, "(", _this.getFormattedDate(annotation.date), ")", " ")))); }))))));
     };
     Object.defineProperty(class_1, "assetsDirs", {
         get: function () { return ["assets"]; },

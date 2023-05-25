@@ -72,7 +72,8 @@
 
 .annotation_search{
   font-size: 18px; 
-  padding: 3px;
+  float: right;
+  color: black;
 }
 
 .body {
@@ -96,7 +97,37 @@
   font-size: 20px;
   border-radius: 4px;
   text-align: center;
-  padding-bottom: 25px;
+  padding-bottom: 5px;
+}
+
+.keyword {
+  background-color: lightgray;
+  color: white;
+  font-size: 15px;
+  margin: 3px;
+  padding: 4px;
+}
+
+.search_button {
+  background-color:lightgrey; /* Green */
+  margin: auto;
+  font-size: 15px;
+  color:black;
+  width: auto;
+  margin: 3px;
+}
+
+.search_button:hover{
+  background-color:grey; /* Green */
+}
+
+.add_keyword_button {
+  background-color: #4caf50; /* Green */
+  margin: auto;
+  font-size: 15px;
+  color:white;
+  width: auto;
+  margin: 3px;
 }
 
 button {
@@ -114,12 +145,6 @@ button {
   margin: 5px;
 }
 
-.search_button {
-  background-color: #4caf50; /* Green */
-  font-size: 15px;
-  width: auto;
-  margin: 3px;
-}
 
 .add_button {
   background-color: #4caf50; /* Green */

@@ -17,6 +17,7 @@ export declare class AnnotationsDisplay {
     searchSampleIdentifier: string;
     postSampleIdentifier: string;
     annotationKeyword: string;
+    annotationKeywords: Array<string>;
     annotationAdded: EventEmitter<void>;
     checkAuth: EventEmitter<void>;
     handleClick(ev: any): Promise<void>;
@@ -28,5 +29,6 @@ export declare class AnnotationsDisplay {
     updateKeyword(event: any): void;
     submitAnnotation(): Promise<boolean>;
     getFormattedDate(date: any): string;
+    parseAnnotation(annotation: any): any;
     render(): any;
 }

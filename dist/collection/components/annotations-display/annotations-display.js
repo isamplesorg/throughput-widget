@@ -7,6 +7,7 @@ export class AnnotationsDisplay {
         this.annotations = [];
         this.DEFAULT_ANNOTATION_TEXT = "Enter your annotation here.";
         this.showInfo = false; // show AboutThroughput component
+        this.annotationKeywords = []; // array of string keywords
     }
     async handleClick(ev) {
         const clicked_id = ev.composedPath()[0].id;
@@ -42,6 +43,9 @@ export class AnnotationsDisplay {
                 this.searchSampleIdentifier = "";
                 this.handleSampleIdentifier(this.searchSampleIdentifier);
                 break;
+            case "add_keyword_button":
+                this.annotationKeywords.push(this.annotationKeyword);
+                this.annotationKeyword = ""; // clear 
             default:
                 console.error("Unhandled click, id = ", clicked_id);
         }
@@ -73,10 +77,10 @@ export class AnnotationsDisplay {
             dbid: this.identifier,
             additionalType: this.additionalType,
             id: this.postSampleIdentifier,
-            body: {
+            body: JSON.stringify({
                 "text": this.annotationText,
-                "keyword": this.annotationKeyword
-            }
+                "keyword": this.annotationKeywords
+            })
         };
         const url = "https://throughputdb.com/api/widget/";
         const response = await fetch(url, {
@@ -109,6 +113,23 @@ export class AnnotationsDisplay {
             "/" +
             properDate.getFullYear());
     }
+    parseAnnotation(annotation) {
+        try {
+            let annotObj = JSON.parse(annotation);
+            if (typeof annotObj === 'object') {
+                let keywords = annotObj.keyword;
+                let text = annotObj.text;
+                return h("div", null,
+                    text,
+                    " ",
+                    keywords.map((keyword) => h("span", { class: "keyword" }, keyword)));
+            }
+        }
+        catch (error) {
+            // not a JSON content, just return string 
+            return h("div", null, annotation);
+        }
+    }
     render() {
         // Show "Add Annotation" button or add annotation UI (text area, Submit/Cancel buttons)
         // depending on state of this.addAnnotation. Doing this here to avoid hard-to-read
@@ -117,12 +138,14 @@ export class AnnotationsDisplay {
         if (this.addAnnotation) {
             annotationElement =
                 h("div", { class: "postInput" },
-                    "Sample Identifier ",
+                    "Identifier ",
                     h("input", { type: "text", value: this.postSampleIdentifier, onInput: (event) => this.updatePostSampleIdentifier(event) }),
                     " ",
                     h("br", null),
-                    "Keyword ",
+                    "Keyword",
                     h("input", { type: "text", value: this.annotationKeyword, onInput: (event) => this.updateKeyword(event) }),
+                    h("button", { id: "add_keyword_button", class: "add_keyword_button" }, "Add"),
+                    this.annotationKeywords.map((keyword) => h("span", { class: "keyword" }, keyword)),
                     h("textarea", { onInput: (event) => this.updateAnnotationText(event), onFocus: (event) => this.clearDefaultAnnotationText(event) }, this.DEFAULT_ANNOTATION_TEXT),
                     h("button", { id: "submit_button", class: "add_button" }, "Submit"),
                     h("button", { id: "cancel_button", class: "cancel_button" }, "Cancel"));
@@ -136,19 +159,20 @@ export class AnnotationsDisplay {
                     h("a", { id: "close_x", class: "close" })),
                 h("div", { class: "header" },
                     "Throughput Annotations ",
-                    h("a", { id: "info_i" }, "\u24D8")),
+                    h("a", { id: "info_i" }, "\u24D8"),
+                    h("br", null),
+                    h("div", { class: "annotation_search" },
+                        "Identifier ",
+                        h("input", { type: "text", value: this.searchSampleIdentifier, onInput: (event) => this.updateSearchSampleIdentifier(event) }),
+                        h("button", { id: "search_button", class: "search_button" }, "Search"),
+                        h("button", { id: "reset_button", class: "search_button" }, "Reset"))),
                 h("div", { class: "body" },
                     !this.readOnlyMode ? (h("orcid-connect", { orcidClientId: this.orcidClientId, authenticated: this.authenticated, orcidName: this.orcidName })) : null,
                     this.authenticated && annotationElement,
                     " ",
                     h("br", null),
-                    h("div", { class: "annotation_search" },
-                        "Sample Identifier ",
-                        h("input", { type: "text", value: this.searchSampleIdentifier, onInput: (event) => this.updateSearchSampleIdentifier(event) }),
-                        h("button", { id: "search_button", class: "search_button" }, "Search"),
-                        h("button", { id: "reset_button", class: "search_button" }, "Reset")),
                     this.annotations.map((annotation) => (h("div", { class: "annotation_item" },
-                        annotation.annotation,
+                        this.parseAnnotation(annotation.annotation),
                         h("div", { class: "annotation_metadata" },
                             h("div", { class: "annotation_author" }, annotation.annotationauthor ? annotation.annotationauthor : "[null author]"),
                             h("div", { class: "orcidLink" },
@@ -353,7 +377,8 @@ export class AnnotationsDisplay {
         "annotationText": {},
         "searchSampleIdentifier": {},
         "postSampleIdentifier": {},
-        "annotationKeyword": {}
+        "annotationKeyword": {},
+        "annotationKeywords": {}
     }; }
     static get events() { return [{
             "method": "annotationAdded",
